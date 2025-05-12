@@ -39,56 +39,40 @@ function tornarinvisivel02() {
     // Seleciona o elemento pelo id
     const elemento = document.getElementById('opcoes02');
 
-    // Verifica se está visível e altera a propriedade CSS
-    if (elemento.style.display === 'none') {
-        elemento.style.display = 'flex';
-    } else {
         elemento.style.display = 'none';
         input02.value=""
-
-    }
+        
 }
+
 
 function tornarinvisivel03() {
     // Seleciona o elemento pelo id
     const elemento = document.getElementById('opcoes03');
 
-    // Verifica se está visível e altera a propriedade CSS
-    if (elemento.style.display === 'none') {
-        elemento.style.display = 'flex';
-    } else {
         elemento.style.display = 'none';
         input03.value=""
 
-    }
+    
 }
 
 function tornarinvisivel04() {
     // Seleciona o elemento pelo id
     const elemento = document.getElementById('opcoes04');
 
-    // Verifica se está visível e altera a propriedade CSS
-    if (elemento.style.display === 'none') {
-        elemento.style.display = 'flex';
-    } else {
         elemento.style.display = 'none';
         input04.value=""
-
-    }
+    
 }
 
 function tornarinvisivel05() {
     // Seleciona o elemento pelo id
     const elemento = document.getElementById('opcoes05');
 
-    // Verifica se está visível e altera a propriedade CSS
-    if (elemento.style.display === 'none') {
-        elemento.style.display = 'flex';
-    } else {
         elemento.style.display = 'none';
         input05.value=""
 
-    }
+    
+    
 }
 
 function limpar(){
