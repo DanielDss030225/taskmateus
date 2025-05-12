@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crie uma enquete</title>
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+<nav> <!-- nav para criar 3 páginas independente -->
+<ul> <!-- lista de itens para 3 páginas-->
+
+<li> <!-- pagina criar enquete-->
+<h1>
+            Crie uma enquete:
+</h1>
+   
+           
+<fildset>        <!-- Fildset para o titulo da enquete-->  
+<legend id="titulo"> Título</legend>
+
+<div class="opcoes">
+<input  id="inputTitulo" placeholder="Digite um título">   
+
+</div>
+</fildset>
+    
+           
+
+<fildset>    <!-- Fildset para as opções  -->      
+<legend> Adicione opções:</legend>
+<div  class="opcoes">
+<input  id="input01" placeholder="Opção 01">   
+</div>
+
+<div id="opcoes02" style="display: none;" class="opcoes">
+<input  id="input02" placeholder="Opção 02">   
+<button onclick="tornarinvisivel02()" class="deletar"> x</button>  
+</div>
+
+<div id="opcoes03" style="display: none;" class="opcoes">
+<input  id="input03" placeholder="Opção 03">   
+<button onclick="tornarinvisivel03()"class="deletar"> x</button>  
+</div>
+
+<div  id="opcoes04" style="display: none;" class="opcoes">
+<input id="input04"placeholder="Opção 04">   
+<button onclick="tornarinvisivel04()" class="deletar"> x</button>  
+</div>
+
+<div id="opcoes05"  style="display: none;" class="opcoes">
+<input   id="input05" placeholder="Opção 05">   
+<button onclick="tornarinvisivel05()" class="deletar"> x</button>  
+</div>
+
+</fildset>
+<ul class="L" id="listaTarefas">
+</ul>
+<div class="adicionarOpcoes">
+<button onclick="adicionarOpcoes()"> Adicionar opções </button>
+<button onclick="limpar()"class="buttonLimpar"> Limpar</button>
+
+</div>
+
+
+
+<!-- Esse botão farei salvar a enquete-->
+<div class="buttonSalvar">
+<button> Salvar Enquete</button>
+
+</div>
+</li>
+
+<li>  <!-- pagina votar-->
+<h1>
+Vote:
+</h1>
+
+
+</li>
+
+<li>  <!-- pagina mostrar resultado-->
+<h1>
+Resultado da enquete:
+</h1>
+</li>
+</ul>
+
+</nav>
+<script src="index.js" defer> </script> <!-- chama as funções js-->
+
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+body {
+    background-color: rgb(81, 93, 209);
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+nav {
+    align-items: center;
+}
+.descricaoEnquete {
+    display: flex;
+    align-items: center;
+}
+
+fieldset{
+    width:100%;
+    border: 0;
+}
+input {
+    height: 20px;
+    width:100%;
+    border: 1;
+}
+
+
+p { 
+    padding: 10px;
+}
+
+h1{ 
+    width: 100%;
+    text-align: center;
+    text-decoration: none;  
+}
+ul { 
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    
+}
+ul .criarLista { 
+    align-items: center;
+    display: block;
+    width: 100%;
+    justify-content: center;
+    
+}
+
+ul li {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    margin: 10px 10px;
+    padding: 10px;
+    border-radius: 2px;
+    width: 100%;
+    text-align: center;
+      
+  }
+  
+  ul .criarLista li { 
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    margin: 10px 10px;
+    padding: 10px;
+    border-radius: 2px;
+    width: 60%;
+    
+}
+
+
+.buttonSalvar {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.buttonSalvar button {
+    width: 90%;
+}
+
+
+.opcoes {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+.deletar {
+    width: 50px;
+}
+
+.adicionarOpcoes {
+    display: flex;
+    width: 100%;
+    align-items: top;
+    height: 40px;
+    text-align: top;
+    justify-content: space-between;
+    
+}
+.adicionarOpcoes button{
+
+    font-size: 10px;
+    width: 50%;
+    height: 25px;
+    text-align: center;
+}
+.adicionarOpcoes .buttonLimpar{
+
+    font-size: 10px;
+    width: 30%;
+    height: 25px;
+    text-align: center;
+    
+}
+
