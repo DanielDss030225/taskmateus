@@ -8,57 +8,51 @@
 
 </head>
 <body>
-<nav> <!-- nav para criar 3 páginas independente -->
-<ul> <!-- lista de itens para 3 páginas-->
+    <div class="container">
 
-<li> <!-- pagina criar enquete-->
+ <!-- pagina criar enquete-->
 <h1>
             Crie uma enquete:
 </h1>
    
-           
+   <div>
+    
 <fildset>        <!-- Fildset para o titulo da enquete-->  
 <legend id="titulo"> Título</legend>
 
 <div class="opcoes">
-<input  id="inputTitulo" placeholder="Digite um título">   
+<input type="text" id="inputTitulo" placeholder="Digite um título">   
 
 </div>
 </fildset>
-    
+
+       </div>       
+
            
 
 <fildset>    <!-- Fildset para as opções  -->      
 <legend> Adicione opções:</legend>
-<div  class="opcoes">
-<input  id="input01" placeholder="Digite uma breve descrição.">   
-</div>
 
-<div id="opcoes02" style="display: none;" class="opcoes">
-<input  id="input02" placeholder="Digite uma breve descrição.">   
-<button onclick="tornarinvisivel02()" class="deletar"> x</button>  
-</div>
 
-<div id="opcoes03" style="display: none;" class="opcoes">
-<input  id="input03" placeholder="Digite uma breve descrição.">   
-<button onclick="tornarinvisivel03()"class="deletar"> x</button>  
-</div>
 
-<div  id="opcoes04" style="display: none;" class="opcoes">
-<input id="input04"placeholder="Digite uma breve descrição.">   
-<button onclick="tornarinvisivel04()" class="deletar"> x</button>  
-</div>
 
-<div id="opcoes05"  style="display: none;" class="opcoes">
-<input   id="input05" placeholder="Digite uma breve descrição.">   
-<button onclick="tornarinvisivel05()" class="deletar"> x</button>  
+<ul class="fundoEnquetes" id="listaDeEnquetes">
+ <li> 
+    <div id="opcoes01"  class="opcoes">
+<input type="text" id="input01" placeholder="Digite uma breve descrição.">   
+<button class="deletar"> x</button>  
 </div>
+ </li>
+
+</ul>
 
 </fildset>
-<ul class="L" id="listaTarefas">
-</ul>
+
+
+
+
 <div class="adicionarOpcoes">
-<button onclick="adicionarOpcoes()"> Adicionar opções </button>
+<button class="buttonAdicionar" onclick="adicionarOpcoes()"> Adicionar opções </button>
 <button onclick="limpar()"class="buttonLimpar"> Limpar</button>
 
 </div>
@@ -70,25 +64,12 @@
 <button> Salvar Enquete</button>
 
 </div>
-</li>
-
-<li>  <!-- pagina votar-->
-<h1>
-Vote:
-</h1>
 
 
-</li>
 
-<li>  <!-- pagina mostrar resultado-->
-<h1>
-Resultado da enquete:
-</h1>
-</li>
-</ul>
 
-</nav>
 <script src="index.js" defer> </script> <!-- chama as funções js-->
+</div>
 
 
 </body>
