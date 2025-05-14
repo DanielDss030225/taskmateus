@@ -130,71 +130,79 @@ function gerarCodigoUnico() {
     );
 }
 
+
+
+
 // Função para salvar no Firebase
 window.salvarDadosNoFirebase = function () {
-    //let idusuario = document.getElementById("inputTitulo").value;
     const codigoUnico = gerarCodigoUnico();
-    const userId = codigoUnico; // Pode ser o ID do usuário autenticado
-  
-  // Para cada item na lista de IDs
-for (let i = 0; i < idsDosInputs.length; i++) {
-    // Acessa o input pelo ID
-    const input = document.getElementById(idsDosInputs[i]);
+    const userId = codigoUnico; 
 
-    if (input) {
-        // Obtém o valor do input
-        const valorDoInput = input.value;
+    // Cria um objeto para armazenar as opções no formato desejado
+    const dadosParaSalvar = {};
 
-        // Exemplo de ação: imprimir o valor do input no console
-        console.log(`Valor do input com id ${idsDosInputs[i]}: ${valorDoInput}`);
+    // Obtém o valor do primeiro input
+    const primeiroInput = document.getElementById("input01");
+    
+    if (primeiroInput && primeiroInput.value.trim() !== "") {
+        dadosParaSalvar["Opcao_01"] = primeiroInput.value.trim();
     } else {
-        console.log(`Input com id ${idsDosInputs[i]} não encontrado.`);
+        alert("Preencha todas as opções!");
+        return;
     }
-}
 
+    // Percorre todos os IDs armazenados no array global
+    idsDosInputs.forEach((id, index) => {
+        const input = document.getElementById(id);
+        if (input && input.value.trim() !== "") {
+            // Salva diretamente no objeto com a nomenclatura desejada
+            const nomeCampo = `Opcao_${(index + 2).toString().padStart(2, '0')}`;
+            dadosParaSalvar[nomeCampo] = input.value.trim();
+        } else {
+            console.warn(`Input com id ${id} não encontrado ou vazio.`);
+        }
+    });
 
+    console.log("Valores das opções a serem salvas:", dadosParaSalvar);
 
-    // Aqui, alterei para "let" para que possa ser modificada
-
+    // Obtém o valor do título
     let tituloEnqueteSvl = document.getElementById("inputTitulo").value;
-    let primeiroInput = document.getElementById("input01").value;
 
-    // Verifica se o valor está vazio e define como "Indefinido"
     if (tituloEnqueteSvl.trim() === "") {
         tituloEnqueteSvl = "Título indefinido.";
     }
- // Verifica se o valor está vazio e define como "Indefinido"
- if (primeiroInput.trim() === "") {
-    alert("Preencha todas as opções!");
-} else {
 
+    // Adiciona o título e o código de convite ao objeto principal
+    dadosParaSalvar["Titulo"] = tituloEnqueteSvl;
+    dadosParaSalvar["codigoConvite"] = codigoUnico;
 
     // Referência para o caminho no Realtime Database
     const referencia = ref(database, `enquetes/${userId}`);
 
     // Salvando no Firebase
-    set(referencia, {
-        codigoConvite: codigoUnico,
-        Titulo: tituloEnqueteSvl,
-        Opcao01: primeiroInput,
-    })
+    set(referencia, dadosParaSalvar)
     .then(() => {
-
         // Gera o link de compartilhamento e exibe no console
         const linkCompartilhamento = `${window.location.origin}/taskmateus/?ref=${codigoUnico}`;
         console.log("Link de convite:", linkCompartilhamento);
         const paragrafo = document.getElementById("linkCompartilhar");
         paragrafo.textContent = linkCompartilhamento;
-        showPage('tab2', this)
-
+        
+        // Alterna para a aba desejada
+        showPage('tab2', this);
     })
     .catch((error) => {
         console.error("Erro ao salvar os dados: ", error.message);
     });
-
 };
 
-}
+
+
+
+
+
+
+
 
 
 window.compartilharLink = function () {
