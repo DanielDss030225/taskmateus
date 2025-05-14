@@ -126,16 +126,19 @@ window.salvarDadosNoFirebase = function () {
     });
 
 };
+
 window.compartilharLink = function () {
-    
     const paragrafo2 = document.getElementById("linkCompartilhar");
-    const url = paragrafo2; // Coloque o link desejado aqui
+    const url = paragrafo2.textContent; // Agora sim, pegando o conteúdo do parágrafo
 
-    window.open(url, '_blank');
-
+    if (url) {
+        window.open(url, '_blank');
+    } else {
+        console.error("Nenhum link encontrado no parágrafo.");
     }
+};
 
 window.recarregarPagina = function () {
     window.location.reload();
-}
+};
 
