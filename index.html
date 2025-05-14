@@ -79,7 +79,34 @@ Crie uma enquete
     </li></a> 
         </ul>
         </fieldset>
-        <button  onclick="recarregarPagina()">Adicionar outra enquete</button>
+        <div class="adicionarOpcoes">
+            <button class="buttonAdicionar" onclick="recarregarPagina()"> Adicionar outra enquete</button>
+            <button  onclick="showPage('tab3', this)" class="buttonPequeno"> Ver</button>
+            </div>
+
+
+
+
+</div>
+
+<div id="tab3" class="page">
+    <h1>Títilo</h1>
+
+    <fieldset class="opcoesFieldset">    <!-- Fildset para as opções  -->      
+        <legend> Pátigina 03</legend>
+        <ul class="fundoEnquetes" id="listaDeEnquetes">
+       <a onclick="compartilharLink()"> <li> 
+        <h3 id="linkCompartilhar">Carregando...</h3>
+
+    </li></a> 
+        </ul>
+        </fieldset>
+        <div class="adicionarOpcoes">
+            <button class="buttonAdicionar" onclick="recarregarPagina()"> Compartilhe esta enquete com os participantes</button>
+            <button onclick="limpar()" class="buttonPequeno"> Criar</button>
+            </div>
+
+
 
 
 </div>

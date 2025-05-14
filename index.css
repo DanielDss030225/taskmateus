@@ -289,3 +289,17 @@ fieldset::-webkit-scrollbar-track {
 }
 
 
+.buttonPequeno {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 50%;          /* Largura aumentada */
+    max-width: 100px;    /* Define um limite para não estourar o layout */
+    margin: 10px auto;   /* Centraliza horizontalmente */
+    padding: 12px 20px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
