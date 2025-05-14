@@ -12,25 +12,25 @@
 
  <!-- pagina criar enquete-->
 <h1>
-            Crie uma enquete:
+            Crie uma enquete
 </h1>
    
    <div>
     
-<fildset>        <!-- Fildset para o titulo da enquete-->  
-<legend id="titulo"> Título</legend>
+<fieldset>        <!-- Fildset para o titulo da enquete-->  
+<legend id="titulo"> Título:</legend>
 
 <div class="opcoes">
-<input type="text" id="inputTitulo" placeholder="Digite um título">   
+<input class="tituloEnquete" type="text" id="inputTitulo" placeholder="Digite um título">   
 
 </div>
-</fildset>
+</fieldset>
 
        </div>       
 
            
 
-<fildset>    <!-- Fildset para as opções  -->      
+<fieldset class="opcoesFieldset">    <!-- Fildset para as opções  -->      
 <legend> Adicione opções:</legend>
 
 
@@ -39,14 +39,14 @@
 <ul class="fundoEnquetes" id="listaDeEnquetes">
  <li> 
     <div id="opcoes01"  class="opcoes">
-<input type="text" id="input01" placeholder="Digite uma breve descrição.">   
+<input type="text" id="input01" placeholder="Opção 01">   
 <button class="deletar"> x</button>  
 </div>
  </li>
 
 </ul>
 
-</fildset>
+</fieldset>
 
 
 
