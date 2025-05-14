@@ -126,7 +126,14 @@ window.salvarDadosNoFirebase = function () {
     });
 
 };
+window.compartilharLink = function () {
+    
+    const paragrafo2 = document.getElementById("linkCompartilhar");
+    const url = paragrafo2; // Coloque o link desejado aqui
 
+    window.open(url, '_blank');
+
+    }
 
 window.recarregarPagina = function () {
     window.location.reload();
