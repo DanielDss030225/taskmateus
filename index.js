@@ -11,7 +11,7 @@ function atualizarPlaceholders() {
 }
 
 // Função para adicionar uma nova opção
-function adicionarOpcoes() {
+window.adicionarOpcoes = function () {
     let listaDeEnquetes = document.getElementById("listaDeEnquetes");
 
     if (listaDeEnquetes.children.length >= 5) {
@@ -52,7 +52,7 @@ function adicionarOpcoes() {
 }
 
 // Função para limpar todos os itens, exceto o primeiro
-function limpar() {
+window.limpar = function () {
     const listaDeEnquetes = document.getElementById("listaDeEnquetes");
 
     // Mantém o primeiro item com id "input01"
@@ -65,7 +65,7 @@ function limpar() {
     }
 }
 
-function showPage(tabId, element) {
+window.showPage = function(tabId, element) {
     // Oculta todas as páginas
     document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
     // Remove a classe ativa de todas as abas
@@ -77,27 +77,52 @@ function showPage(tabId, element) {
 }
 
 
+// Função para gerar um código único
+// Função para gerar um código único
+// Função para gerar um código único
 // Gerando um código único
-// Função para gerar um código único
-// Função para gerar um código único
-// Função para gerar um código único
 
-// Gerando um código único
+/// index.js
+import { database } from './firebase-config.js';
+import { ref, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
+// Função para gerar um código único
 function gerarCodigoUnico() {
     return 'xxxx-xxxx-xxxx'.replace(/[x]/g, () =>
         (Math.random() * 16 | 0).toString(16)
     );
 }
 
-//const codigo = gerarCodigoUnico();
-//console.log("Código gerado:", codigo);
+// Função para salvar no Firebase
+window.salvarDadosNoFirebase = function () {
+    //let idusuario = document.getElementById("inputTitulo").value;
+    const codigoUnico = gerarCodigoUnico();
+    const userId = codigoUnico; // Pode ser o ID do usuário autenticado
 
-const userId = "DANILSILVA"; // Id do usuário autenticado
-const codigoUnico = gerarCodigoUnico();
+    // Referência para o caminho no Realtime Database
+    const referencia = ref(database, `usuarios/${userId}`);
 
-//firebase.database().ref(`usuarios/${userId}`).set({
-   // codigoConvite: codigoUnico,
-//});
+    // Salvando no Firebase
+    set(referencia, {
+        codigoConvite: codigoUnico,
+    })
+    .then(() => {
+        //alert("Dados salvos com sucesso!");
+        const linkCompartilhamento = `${window.location.origin}/?ref=${codigoUnico}`;
+        console.log("Link de convite:", linkCompartilhamento);
+    })
+    .catch((error) => {
+        //alert("Erro ao salvar os dados: " + error.message);
+        console.error(error);
+    });
+};
 
-const linkCompartilhamento = `${window.location.origin}/?ref=${codigoUnico}`;
-console.log("Link de convite:", linkCompartilhamento);
+
+// Captura os parâmetros da URL
+const params = new URLSearchParams(window.location.search);
+const codigoConvite = params.get('ref');
+
+if (codigoConvite) {
+    console.log("Código de convite detectado:", codigoConvite);
+    verificarConviteNoFirebase(codigoConvite);
+}
