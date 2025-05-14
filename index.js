@@ -81,7 +81,6 @@ window.showPage = function(tabId, element) {
 // Função para gerar um código único
 // Função para gerar um código único
 // Gerando um código único
-
 /// index.js
 import { database } from './firebase-config.js';
 import { ref, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
@@ -99,30 +98,30 @@ window.salvarDadosNoFirebase = function () {
     const codigoUnico = gerarCodigoUnico();
     const userId = codigoUnico; // Pode ser o ID do usuário autenticado
 
+    // Aqui, alterei para "let" para que possa ser modificada
+    let tituloEnqueteSvl = document.getElementById("inputTitulo").value;
+
+    // Verifica se o valor está vazio e define como "Indefinido"
+    if (tituloEnqueteSvl.trim() === "") {
+        tituloEnqueteSvl = "Título indefinido.";
+    }
+
     // Referência para o caminho no Realtime Database
     const referencia = ref(database, `usuarios/${userId}`);
 
     // Salvando no Firebase
     set(referencia, {
         codigoConvite: codigoUnico,
+        Titulo: tituloEnqueteSvl,
     })
     .then(() => {
-        //alert("Dados salvos com sucesso!");
+        // Gera o link de compartilhamento e exibe no console
         const linkCompartilhamento = `${window.location.origin}/?ref=${codigoUnico}`;
         console.log("Link de convite:", linkCompartilhamento);
     })
     .catch((error) => {
-        //alert("Erro ao salvar os dados: " + error.message);
-        console.error(error);
+        console.error("Erro ao salvar os dados: ", error.message);
     });
 };
 
 
-// Captura os parâmetros da URL
-const params = new URLSearchParams(window.location.search);
-const codigoConvite = params.get('ref');
-
-if (codigoConvite) {
-    console.log("Código de convite detectado:", codigoConvite);
-    verificarConviteNoFirebase(codigoConvite);
-}

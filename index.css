@@ -1,9 +1,10 @@
 
 
 body {
-    background-image: url('img/fundoPlanta.jpg'); /* Caminho para sua imagem */
+    /*background-image: url('img/fundoPlanta.jpg'); /* Caminho para sua imagem */
     background-size: cover; /* Preenche todo o espaço */
     background-position: center; /* Centraliza a imagem */
+    background-color:  #2c642e;
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
