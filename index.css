@@ -21,7 +21,7 @@ body {
     width: 100%;
     text-align: center;
     height: auto;
-    max-height: 500px;
+    max-height: 700px;
 }
 
 /* Estilizando o título */
@@ -202,7 +202,7 @@ fieldset.opcoesFieldset {
     width: 98%;
     height: auto;
     min-height: 90px;    
-    max-height: 200px;          /* Define a altura máxima do fieldset */
+    max-height: 250px;          /* Define a altura máxima do fieldset */
     background-color: #f7f4f4;
     overflow-y: auto;           /* Ativa o scroll vertical se ultrapassar o limite */
     scrollbar-width: thin;      /* Estiliza a largura da barra de rolagem no Firefox */

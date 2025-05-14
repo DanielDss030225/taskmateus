@@ -2,8 +2,11 @@
 function atualizarPlaceholders() {
     const inputs = document.querySelectorAll('#listaDeEnquetes input');
     inputs.forEach((input, index) => {
-        const numero = (index + 1).toString().padStart(2, '0');
-        input.placeholder = `Opção ${numero}`;
+        // Não altere o placeholder do input com id "input01"
+        if (input.id !== "input01") {
+            const numero = (index + 1).toString().padStart(2, '0');
+            input.placeholder = `Opção ${numero}`;
+        }
     });
 }
 
@@ -18,15 +21,21 @@ function adicionarOpcoes() {
 
     // Configurações do input
     inputTexto.type = 'text';
+    inputTexto.placeholder = `Opção ${listaDeEnquetes.children.length + 1}`;
 
     // Configurações do botão
     btnRemover.textContent = 'X';
 
-    // Evento de clique para remover o <li>
+    // Evento de clique para remover o <li>, exceto o primeiro item com id "input01"
     btnRemover.addEventListener('click', () => {
-        listaDeEnquetes.removeChild(fundo);
-        atualizarPlaceholders();
+        if (fundo.id !== "input01") {  // Verifica se não é o primeiro item
+            listaDeEnquetes.removeChild(fundo);
+            atualizarPlaceholders();  // Atualiza os placeholders após remoção
+        }
     });
+
+    // Definindo um id único para o novo <li>
+    fundo.id = `input-${listaDeEnquetes.children.length + 1}`;
 
     // Adicionando os elementos no <li> e depois na lista
     fundo.appendChild(inputTexto);
@@ -37,8 +46,16 @@ function adicionarOpcoes() {
     atualizarPlaceholders();
 }
 
-// Função para limpar todos os itens
+// Função para limpar todos os itens, exceto o primeiro
 function limpar() {
     const listaDeEnquetes = document.getElementById("listaDeEnquetes");
-    listaDeEnquetes.innerHTML = ''; // Remove todos os elementos internos
+    
+    // Mantém o primeiro item com id "input01"
+    const primeiroItem = document.getElementById("input01");
+    listaDeEnquetes.innerHTML = ''; // Remove todos os itens
+    
+    // Reinsere o primeiro item
+    if (primeiroItem) {
+        listaDeEnquetes.appendChild(primeiroItem.closest('li'));
+    }
 }
