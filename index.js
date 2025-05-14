@@ -97,7 +97,7 @@ window.salvarDadosNoFirebase = function () {
     //let idusuario = document.getElementById("inputTitulo").value;
     const codigoUnico = gerarCodigoUnico();
     const userId = codigoUnico; // Pode ser o ID do usuário autenticado
-
+   
     // Aqui, alterei para "let" para que possa ser modificada
     let tituloEnqueteSvl = document.getElementById("inputTitulo").value;
 
@@ -118,10 +118,17 @@ window.salvarDadosNoFirebase = function () {
         // Gera o link de compartilhamento e exibe no console
         const linkCompartilhamento = `${window.location.origin}/?ref=${codigoUnico}`;
         console.log("Link de convite:", linkCompartilhamento);
+        const paragrafo = document.getElementById("linkCompartilhar");
+        paragrafo.textContent = linkCompartilhamento;
     })
     .catch((error) => {
         console.error("Erro ao salvar os dados: ", error.message);
     });
+
 };
 
+
+window.recarregarPagina = function () {
+    window.location.reload();
+}
 

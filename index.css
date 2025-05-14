@@ -36,12 +36,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Estilizando os parágrafos */
-p {
-    line-height: 1.6;
-}
 
-/* Estilizando o botão */
 button {
     background-color: #4CAF50;
     color: white;
@@ -280,3 +275,5 @@ fieldset::-webkit-scrollbar-track {
 .page.active {
     display: block;
 }
+
+
