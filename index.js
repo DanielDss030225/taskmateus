@@ -116,7 +116,7 @@ window.salvarDadosNoFirebase = function () {
     })
     .then(() => {
         // Gera o link de compartilhamento e exibe no console
-        const linkCompartilhamento = `${window.location.origin}/?ref=${codigoUnico}`;
+        const linkCompartilhamento = `${window.location.origin}/taskmateus/?ref=${codigoUnico}`;
         console.log("Link de convite:", linkCompartilhamento);
         const paragrafo = document.getElementById("linkCompartilhar");
         paragrafo.textContent = linkCompartilhamento;

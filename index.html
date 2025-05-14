@@ -69,8 +69,18 @@ Crie uma enquete
 <!--inicio pagina 02-->
 <div id="tab2" class="page">
     <h1>Enquete adicionada com sucesso!</h1>
-    <h2 id="linkCompartilhar">Carregando...</h2>
-    <button  onclick="recarregarPagina()">Adicionar outra enquete</button>
+
+    <fieldset class="opcoesFieldset">    <!-- Fildset para as opções  -->      
+        <legend> Agora compartilhe com seus amigos!</legend>
+        <ul class="fundoEnquetes" id="listaDeEnquetes">
+       <a onclick="recarregarPagina()"> <li> 
+        <h3 id="linkCompartilhar">Carregando...</h3>
+
+    </li></a> 
+        </ul>
+        </fieldset>
+        <button  onclick="recarregarPagina()">Adicionar outra enquete</button>
+
 
 </div>
 <!--final da página 02-->
