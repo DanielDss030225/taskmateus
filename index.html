@@ -40,7 +40,7 @@
  <li> 
     <div id="opcoes01"  class="opcoes">
 <input type="text" id="input01" placeholder="Opção 01">   
-<button class="deletar"> x</button>  
+<button onclick="adicionarOpcoes()" class="deletar">+</button>  
 </div>
  </li>
 
@@ -49,11 +49,9 @@
 </fieldset>
 
 
-
-
 <div class="adicionarOpcoes">
 <button class="buttonAdicionar" onclick="adicionarOpcoes()"> Adicionar opções </button>
-<button onclick="limpar()"class="buttonLimpar"> Limpar</button>
+<button onclick="limpar(),adicionarOpcoes()"class="buttonLimpar"> Limpar</button>
 
 </div>
 
