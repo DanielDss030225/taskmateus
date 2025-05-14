@@ -2,7 +2,7 @@
 function atualizarPlaceholders() {
     const inputs = document.querySelectorAll('#listaDeEnquetes input');
     inputs.forEach((input, index) => {
-        // Não altere o placeholder do input com id "input01"
+
         if (input.id !== "input01") {
             const numero = (index + 1).toString().padStart(2, '0');
             input.placeholder = `Opção ${numero}`;
@@ -14,7 +14,6 @@ function atualizarPlaceholders() {
 function adicionarOpcoes() {
     let listaDeEnquetes = document.getElementById("listaDeEnquetes");
 
-    // Verifica se o total de itens já é 5
     if (listaDeEnquetes.children.length >= 5) {
         alert("Máximo de 5 opções atingido.");
         return;
@@ -65,3 +64,40 @@ function limpar() {
         listaDeEnquetes.appendChild(primeiroItem.closest('li'));
     }
 }
+
+function showPage(tabId, element) {
+    // Oculta todas as páginas
+    document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+    // Remove a classe ativa de todas as abas
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+
+    // Mostra a página correspondente e marca a aba como ativa
+    document.getElementById(tabId).classList.add('active');
+    element.classList.add('active');
+}
+
+
+// Gerando um código único
+// Função para gerar um código único
+// Função para gerar um código único
+// Função para gerar um código único
+
+// Gerando um código único
+function gerarCodigoUnico() {
+    return 'xxxx-xxxx-xxxx'.replace(/[x]/g, () =>
+        (Math.random() * 16 | 0).toString(16)
+    );
+}
+
+//const codigo = gerarCodigoUnico();
+//console.log("Código gerado:", codigo);
+
+const userId = "DANILSILVA"; // Id do usuário autenticado
+const codigoUnico = gerarCodigoUnico();
+
+//firebase.database().ref(`usuarios/${userId}`).set({
+   // codigoConvite: codigoUnico,
+//});
+
+const linkCompartilhamento = `${window.location.origin}/?ref=${codigoUnico}`;
+console.log("Link de convite:", linkCompartilhamento);
