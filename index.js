@@ -14,6 +14,12 @@ function atualizarPlaceholders() {
 function adicionarOpcoes() {
     let listaDeEnquetes = document.getElementById("listaDeEnquetes");
 
+    // Verifica se o total de itens já é 5
+    if (listaDeEnquetes.children.length >= 5) {
+        alert("Máximo de 5 opções atingido.");
+        return;
+    }
+
     // Cria os elementos necessários
     let fundo = document.createElement("li");
     let inputTexto = document.createElement('input');
@@ -49,11 +55,11 @@ function adicionarOpcoes() {
 // Função para limpar todos os itens, exceto o primeiro
 function limpar() {
     const listaDeEnquetes = document.getElementById("listaDeEnquetes");
-    
+
     // Mantém o primeiro item com id "input01"
     const primeiroItem = document.getElementById("input01");
     listaDeEnquetes.innerHTML = ''; // Remove todos os itens
-    
+
     // Reinsere o primeiro item
     if (primeiroItem) {
         listaDeEnquetes.appendChild(primeiroItem.closest('li'));

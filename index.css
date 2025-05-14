@@ -1,9 +1,11 @@
 /* Estilizando o body */
 body {
+    background-image: url('img/fundoPlanta.jpg'); /* Caminho para sua imagem */
+    background-size: cover; /* Preenche todo o espaço */
+    background-position: center; /* Centraliza a imagem */
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #f5f7fa;
     color: #333;
     display: flex;
     justify-content: center;
@@ -13,6 +15,7 @@ body {
 
 /* Container centralizado */
 .container {
+    
     background-color: #ffffff;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -64,6 +67,23 @@ color: white;
 button:hover {
     background-color: #45a049;
 }
+
+/* Estilizando o botão de salvar */
+.buttonSalvarbtn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 80%;          /* Largura aumentada */
+    max-width: 600px;    /* Define um limite para não estourar o layout */
+    margin: 10px auto;   /* Centraliza horizontalmente */
+    padding: 12px 20px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
 
 
 /* Estilizando a lista (ul) */
@@ -171,7 +191,7 @@ input.tituloEnquete {
 
 /* Estilizando o fieldset rolável */
 fieldset {
-    border: 2px solid #4CAF50;
+    border: 1px solid #4CAF50;
     border-radius: 8px;
     padding-left: 5px;
     padding-right: 5px;
@@ -180,7 +200,6 @@ fieldset {
     margin-bottom: 10px;
     width: 98%;
     height: 80px;              /* Define a altura máxima do fieldset */
-    background-color: #f7f4f4;
     overflow-y: auto;           /* Ativa o scroll vertical se ultrapassar o limite */
     scrollbar-width: thin;      /* Estiliza a largura da barra de rolagem no Firefox */
     scrollbar-color: #4CAF50 #f7f4f4; /* Cores da barra no Firefox */
@@ -192,7 +211,7 @@ fieldset {
 
 
 fieldset.opcoesFieldset {
-    border: 2px solid #4CAF50;
+    border: 1px solid #4CAF50;
     border-radius: 8px;
     padding-left: 5px;
     padding-right: 5px;
@@ -203,7 +222,6 @@ fieldset.opcoesFieldset {
     height: auto;
     min-height: 90px;    
     max-height: 250px;          /* Define a altura máxima do fieldset */
-    background-color: #f7f4f4;
     overflow-y: auto;           /* Ativa o scroll vertical se ultrapassar o limite */
     scrollbar-width: thin;      /* Estiliza a largura da barra de rolagem no Firefox */
     scrollbar-color: #4CAF50 #f7f4f4; /* Cores da barra no Firefox */
@@ -234,3 +252,4 @@ fieldset::-webkit-scrollbar-thumb {
 fieldset::-webkit-scrollbar-track {
     background: #f7f4f4;
 }
+
