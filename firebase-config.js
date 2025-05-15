@@ -1,3 +1,8 @@
+// Em outro arquivo do seu backend
+const { database } = require('./firebase-config');
+// Exporta o database para ser usado em outras partes do backend
+module.exports = { database };
+
 const params = new URLSearchParams(window.location.search);
 const codigoConvite = params.get('ref');
 
