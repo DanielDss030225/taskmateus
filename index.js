@@ -17,8 +17,8 @@ function atualizarPlaceholders() {
 window.adicionarOpcoes = function () {
     let listaDeEnquetes = document.getElementById("listaDeEnquetes");
 
-    if (listaDeEnquetes.children.length >= 5) {
-        alert("Máximo de 5 opções atingido.");
+    if (listaDeEnquetes.children.length >= 30) {
+        alert("Máximo de 30 opções atingido.");
         return;
     }
 
