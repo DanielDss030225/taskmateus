@@ -1,0 +1,17 @@
+# Ignora dependências
+node_modules/
+
+# Ignora variáveis de ambiente (senhas, chaves de API, etc.)
+.env
+
+# Ignora logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignora cache do sistema
+.DS_Store
+
+# Ignora pastas de builds (caso compile algo)
+dist/
+build/
