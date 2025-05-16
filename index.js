@@ -1,4 +1,5 @@
 
+require('dotenv').config(); // Carrega variáveis de ambiente de um arquivo .env
 
 // Variável global para armazenar os IDs dos inputs
 let idsDosInputs = [];
