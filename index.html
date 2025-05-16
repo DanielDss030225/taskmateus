@@ -5,132 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crie uma enquete</title>
     <link rel="stylesheet" href="index.css">
-    <base href="/taskmateus/">
+
+    <!-- Lógica para ajustar dinamicamente a URL base -->
+   <script>
+    // Define o caminho base dinamicamente com base no hostname
+    var baseHref = window.location.hostname === 'localhost'
+        ? '/'
+        : '/taskmateus/'; // substitua pelo nome exato do seu repositório
+
+    var baseTag = document.createElement('base');
+    baseTag.href = baseHref;
+    document.head.appendChild(baseTag);
+</script>
 
 
 </head>
 <body>
 
-  
-<div class="container"> <!--inicio da class .container-->
+<div class="container"> <!-- inicio da class .container -->
 
-  
-
-
-
-<!--inicio pagina 01-->
-<!--inicio pagina 01-->
-<!--inicio pagina 01-->
+<!-- inicio da página 01 -->
 <div id="tab1" class="page active">
-<!-- pagina criar enquete-->
-<h1>
-Crie uma enquete
-</h1>
-   
-<div>
-    
-<fieldset>        <!-- Fildset para o titulo da enquete-->  
-<legend id="titulo"> Título:</legend>
+    <h1>Crie uma enquete</h1>
 
-<div class="opcoes">
-<input class="tituloEnquete" type="text" id="inputTitulo" placeholder="Digite um título">   
+    <fieldset>
+        <legend id="titulo"> Título:</legend>
+        <div class="opcoes">
+            <input class="tituloEnquete" type="text" id="inputTitulo" placeholder="Digite um título">
+        </div>
+    </fieldset>
 
+    <fieldset class="opcoesFieldset">
+        <legend> Adicione opções:</legend>
+        <ul class="fundoEnquetes" id="listaDeEnquetes">
+            <li>
+                <div id="opcoes01" class="opcoes">
+                    <input type="text" id="input01" placeholder="Opção 01">
+                    <button onclick="adicionarOpcoes()" class="deletar">+</button>
+                </div>
+            </li>
+        </ul>
+    </fieldset>
+
+    <div class="adicionarOpcoes">
+        <button class="buttonAdicionar" onclick="adicionarOpcoes()">Adicionar opções</button>
+        <button onclick="limpar()" class="buttonLimpar">Limpar</button>
+    </div>
+
+    <div class="buttonSalvar">
+        <button onclick="salvarDadosNoFirebase()" class="buttonSalvarbtn">Salvar Enquete</button>
+    </div>
 </div>
-</fieldset>
-</div>               
-<fieldset class="opcoesFieldset">    <!-- Fildset para as opções  -->      
-<legend> Adicione opções:</legend>
-<ul class="fundoEnquetes" id="listaDeEnquetes">
-<li> 
-<div id="opcoes01"  class="opcoes">
-<input type="text" id="input01" placeholder="Opção 01">   
-<button onclick="adicionarOpcoes()" class="deletar">+</button>  
-</div>
-</li>
-</ul>
-</fieldset>
+<!-- final da página 01 -->
 
-<div class="adicionarOpcoes">
-<button class="buttonAdicionar" onclick="adicionarOpcoes()"> Adicionar opções </button>
-<button onclick="limpar()"class="buttonLimpar"> Limpar</button>
-</div>
-
-<!-- Esse botão farei salvar a enquete-->
-<div class="buttonSalvar">
-<button  onclick="salvarDadosNoFirebase()" class="buttonSalvarbtn"> Salvar Enquete</button>
-</div>
-</div>
-<!--final da página 01-->
-<!--final da página 01-->
-<!--final da página 01-->
-
-
-
-<!--inicio pagina 02-->
-<!--inicio pagina 02-->
-<!--inicio pagina 02-->
+<!-- inicio da página 02 -->
 <div id="tab2" class="page">
     <h1>Enquete adicionada com sucesso!</h1>
 
-    <fieldset class="opcoesFieldset">    <!-- Fildset para as opções  -->      
-        <legend> Agora compartilhe com seus amigos!</legend>
+    <fieldset class="opcoesFieldset">
+        <legend>Agora compartilhe com seus amigos!</legend>
         <ul class="fundoEnquetes" id="listaDeEnquetes">
-       <a onclick="compartilharLink()"> <li> 
-        <h3 id="linkCompartilhar">Carregando...</h3>
-
-    </li></a> 
+            <a onclick="compartilharLink()">
+                <li>
+                    <h3 id="linkCompartilhar">Carregando...</h3>
+                </li>
+            </a>
         </ul>
-        </fieldset>
-        <div class="adicionarOpcoes">
-            <button class="buttonAdicionar" onclick="recarregarPagina()"> Clique para adicionar outra enquete!</button>
-            <button  onclick="showPage('tab3', this)" class="buttonPequeno"> Ver</button>
-            </div>
+    </fieldset>
 
-
-
-
+    <div class="adicionarOpcoes">
+        <button class="buttonAdicionar" onclick="recarregarPagina()">Clique para adicionar outra enquete!</button>
+        <button onclick="showPage('tab3', this)" class="buttonPequeno">Ver</button>
+    </div>
 </div>
+<!-- final da página 02 -->
 
+<!-- inicio da página 03 -->
 <div id="tab3" class="page">
-    <h1>Títilo</h1>
+    <h1>Título</h1>
 
-    <fieldset class="opcoesFieldset">    <!-- Fildset para as opções  -->      
-        <legend> Pátigina 03</legend>
+    <fieldset class="opcoesFieldset">
+        <legend>Página 03</legend>
         <ul class="fundoEnquetes" id="listaDeEnquetes">
-       <a onclick="compartilharLink()"> <li> 
-        <h3 id="linkCompartilhar">Carregando...</h3>
-
-    </li></a> 
+            <a onclick="compartilharLink()">
+                <li>
+                    <h3 id="linkCompartilhar">Carregando...</h3>
+                </li>
+            </a>
         </ul>
-        </fieldset>
-        <div class="adicionarOpcoes">
-            <button class="buttonAdicionar" onclick="recarregarPagina()"> Oque achou desta enquete? Clique aqui e crie uma igual!</button>
-            
-            </div>
+    </fieldset>
 
-
-
-
+    <div class="adicionarOpcoes">
+        <button class="buttonAdicionar" onclick="recarregarPagina()">O que achou desta enquete? Clique aqui e crie uma igual!</button>
+    </div>
 </div>
-<!--final da página 02-->
-<!--final da página 02-->
-<!--final da página 02-->
+<!-- final da página 03 -->
 
+<!-- Bibliotecas do Firebase -->
+<script type="module" src="firebase-config.js" defer></script>
+<script type="module" src="index.js" defer></script>
 
+</div> <!-- final da classe container -->
 
-<!--bibliotecas do firebase-->
-<!--bibliotecas do firebase-->
-<!--bibliotecas do firebase-->
-
-<script  type="module" src="./firebase-config.js" defer> </script> <!-- chama as funções js-->
-
-<!--FINAL-->
-<!--FINAL-->
-<!--FINAL-->
-
-
-<script type="module"  src="./index.js" defer> </script> <!-- chama as funções js-->
-
-</div> <!-- final da classe container-->
 </body>
 </html>
