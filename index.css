@@ -8,7 +8,11 @@ body {
     align-items: center;
     min-height: 100vh; /* Garantia de altura mínima */
     height: auto; /* Vai ajustar com JS conforme a altura da .container */
+    transform: scale(0.8); /* Reduz todos os elementos em 20% */
+    transform-origin: top center; /* Mantém o conteúdo alinhado ao topo e centro */
 }
+
+/* O resto do seu código CSS permanece o mesmo */
 
 
 /* Container centralizado */
@@ -23,6 +27,7 @@ body {
     height: auto; /* Permite que a altura seja ajustada com o conteúdo */
     min-height: 400px; /* Altura mínima para evitar que o container fique muito pequeno */
     max-height:auto; /* Limite de altura máxima */
+    margin-top: 80px;
 }
 
 
@@ -283,3 +288,4 @@ P {
 a {
     text-decoration: none;
 }
+
