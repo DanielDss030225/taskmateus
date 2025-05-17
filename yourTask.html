@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crie uma enquete</title>
+    <title>Sua tarefa
+
+    </title>
     <link rel="stylesheet" href="index.css">
 
 </head>
@@ -21,45 +23,30 @@
 <!--inicio pagina 01-->
 <div id="tab1" class="page active">
 <!-- pagina criar enquete-->
-<h1>
-Crie uma enquete
+<h1 id="textoDaTarefa">
+Sua tarefa
 </h1>
-       <p>Preencha os campos abaixo para criar sua enquete.</p>
+   <p class="tornarInvisivel" id="codigo"></p> 
+<p class="tornarInvisivel"  id="opcaoEscolhida">OPÇÃO ESCOLHIDA</p>
+<p>Participe desta enquete deixando seu voto abaixo. </p>
 
-<div>
-    
-<fieldset class="tituloFieldset">        <!-- Fildset para o titulo da enquete-->  
-<legend id="titulo"> Título:</legend>
-
-<div class="opcoes">
-<input class="tituloEnquete" type="text" id="inputTitulo" placeholder="Digite um título">   
-
-</div>
-</fieldset>
 </div>               
 <fieldset class="opcoesFieldset">    <!-- Fildset para as opções  -->      
-<legend> Adicione opções:</legend>
+<legend> Vote:</legend>
 <ul class="fundoEnquetes" id="listaDeEnquetes">
-<li> 
-<div id="opcoes01"  class="opcoes">
-<input type="text" id="input01" placeholder="Opção 01">  
-<button onclick="adicionarOpcoes()" class="deletar">+</button>  
 
-</div>
-</li>
 </ul>
 </fieldset>
 
 <div class="adicionarOpcoes">
-<button class="buttonAdicionar" onclick="adicionarOpcoes()"> Adicionar opções </button>
-<button onclick="limpar()"class="buttonLimpar"> Limpar</button>
+<button class="buttonAdicionar" onclick="salvarVotos() "> Registrar meu voto! </button>
+<button onclick="null"class="buttonLimpar"> Resultados</button>
+
 </div>
 
-<!-- Esse botão farei salvar a enquete-->
-<div class="buttonSalvar">
-<button  onclick="salvarDadosNoFirebase()" class="buttonSalvarbtn"> Salvar Enquete</button>
-</div>
-</div>
+<a href="index.html">
+  <p>Gostou desta enquete? Clique e crie uma igual!</p>
+</a></div>
 <!--final da página 01-->
 <!--final da página 01-->
 <!--final da página 01-->
@@ -71,10 +58,9 @@ Crie uma enquete
 <!--inicio pagina 02-->
 <div id="tab2" class="page">
     <h1>Enquete adicionada com sucesso!</h1>
-       <p>Agora compartilhe este link com os seus amigos!</p>
 
     <fieldset class="opcoesFieldset">    <!-- Fildset para as opções  -->      
-        <legend> Link da sua enquete:</legend>
+        <legend> Agora compartilhe com seus amigos!</legend>
         <ul class="fundoEnquetes" id="listaDeEnquetes">
        <a onclick="compartilharLink()"> <li> 
         <h3 id="linkCompartilhar">Carregando...</h3>
@@ -84,6 +70,7 @@ Crie uma enquete
         </fieldset>
         <div class="adicionarOpcoes">
             <button class="buttonAdicionar" onclick="recarregarPagina()"> Clique para adicionar outra enquete!</button>
+            <button  onclick="showPage('tab3', this)" class="buttonPequeno"> Ver</button>
             </div>
 
 
@@ -98,6 +85,8 @@ Crie uma enquete
 <!--modules-->
 <script  type="module" src="firebase-config.js" defer> </script> 
 <script type="module"  src="index.js" defer>  </script> 
+<script type="module"  src="yourTask.js" defer>  </script> 
+
 </div> 
 </body>
 </html>

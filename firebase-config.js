@@ -26,4 +26,7 @@ const codigoConvite = params.get('ref');
 if (codigoConvite) {
     console.log("Código de convite detectado:", codigoConvite);
     verificarConviteNoFirebase(codigoConvite);
+   
+    
+    
 }

@@ -123,6 +123,7 @@ window.showPage = function (tabId, element) {
 import { database } from './firebase-config.js';
 import { ref, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
+
 // Função para gerar um código único
 function gerarCodigoUnico() {
     return 'xxxx-xxxx-xxxx'.replace(/[x]/g, () =>
@@ -134,66 +135,64 @@ function gerarCodigoUnico() {
 
 
 // Função para salvar no Firebase
+// Função para salvar no Firebase
 window.salvarDadosNoFirebase = function () {
     const codigoUnico = gerarCodigoUnico();
-    const userId = codigoUnico; 
+    const userId = codigoUnico;
 
-    // Cria um objeto para armazenar as opções no formato desejado
     const dadosParaSalvar = {};
 
-    // Obtém o valor do primeiro input
-    const primeiroInput = document.getElementById("input01");
-    
-    if (primeiroInput && primeiroInput.value.trim() !== "") {
-        dadosParaSalvar["Opcao_01"] = primeiroInput.value.trim();
-    } else {
-        alert("Preencha todas as opções!");
-        return;
-    }
-
-    // Percorre todos os IDs armazenados no array global
-    idsDosInputs.forEach((id, index) => {
-        const input = document.getElementById(id);
-        if (input && input.value.trim() !== "") {
-            // Salva diretamente no objeto com a nomenclatura desejada
-            const nomeCampo = `Opcao_${(index + 2).toString().padStart(2, '0')}`;
-            dadosParaSalvar[nomeCampo] = input.value.trim();
-        } else {
-            console.warn(`Input com id ${id} não encontrado ou vazio.`);
-        }
-    });
-
-    console.log("Valores das opções a serem salvas:", dadosParaSalvar);
-
-    // Obtém o valor do título
-    let tituloEnqueteSvl = document.getElementById("inputTitulo").value;
-
-    if (tituloEnqueteSvl.trim() === "") {
+    // Título
+    let tituloEnqueteSvl = document.getElementById("inputTitulo").value.trim();
+    if (tituloEnqueteSvl === "") {
         tituloEnqueteSvl = "Título indefinido.";
     }
 
-    // Adiciona o título e o código de convite ao objeto principal
     dadosParaSalvar["Titulo"] = tituloEnqueteSvl;
     dadosParaSalvar["codigoConvite"] = codigoUnico;
 
-    // Referência para o caminho no Realtime Database
+    let todosPreenchidos = true;
+
+    // Ordena corretamente para garantir que input01 venha como Opcao01
+    const todosIds = [...idsDosInputs];
+
+    // Garante que input01 venha primeiro mesmo que tenha sido adicionado depois
+    if (!todosIds.includes("input01")) {
+        todosIds.unshift("input01");
+    } else {
+        todosIds.splice(todosIds.indexOf("input01"), 1);
+        todosIds.unshift("input01");
+    }
+
+    // Salvar cada input no formato: OpcaoXX: [valor, 0]
+    todosIds.forEach((id, index) => {
+        const input = document.getElementById(id);
+        if (input && input.value.trim() !== "") {
+            const valorInput = input.value.trim();
+            const chave = `Opcao${(index + 1).toString().padStart(2, '0')}`;
+            dadosParaSalvar[chave] = [valorInput, 0];
+        } else {
+            todosPreenchidos = false;
+        }
+    });
+
+    if (!todosPreenchidos) {
+        alert("Preencha todos os campos antes de salvar.");
+        return;
+    }
+
     const referencia = ref(database, `enquetes/${userId}`);
 
-    // Salvando no Firebase
     set(referencia, dadosParaSalvar)
-    .then(() => {
-        // Gera o link de compartilhamento e exibe no console
-        const linkCompartilhamento = `${window.location.origin}/taskmateus/?ref=${codigoUnico}`;
-        console.log("Link de convite:", linkCompartilhamento);
-        const paragrafo = document.getElementById("linkCompartilhar");
-        paragrafo.textContent = linkCompartilhamento;
-        
-        // Alterna para a aba desejada
-        showPage('tab2', this);
-    })
-    .catch((error) => {
-        console.error("Erro ao salvar os dados: ", error.message);
-    });
+        .then(() => {
+            const linkCompartilhamento = `${window.location.origin}/TAREFA%20DO%20MATEUS/yourTask.html?ref=${codigoUnico}`;
+            document.getElementById("linkCompartilhar").textContent = linkCompartilhamento;
+            console.log("Link de convite:", linkCompartilhamento);
+            showPage('tab2', this);
+        })
+        .catch((error) => {
+            console.error("Erro ao salvar os dados: ", error.message);
+        });
 };
 
 

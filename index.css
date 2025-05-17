@@ -1,41 +1,36 @@
-
-
 body {
-    /*background-image: url('img/fundoPlanta.jpg'); /* Caminho para sua imagem */
-    background-size: cover; /* Preenche todo o espaço */
-    background-position: center; /* Centraliza a imagem */
-    background-color:  #2c642e;
+    background-color: #1e1e1e;
     margin: 0;
     padding: 0;
     font-family: 'Arial', sans-serif;
-    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh; /* Garantia de altura mínima */
+    height: auto; /* Vai ajustar com JS conforme a altura da .container */
 }
+
 
 /* Container centralizado */
 .container {
-    
-    background-color: #ffffff;
+    background-color: #2c2c2c;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     padding: 30px;
     max-width: 600px;
     width: 100%;
     text-align: center;
-    height: auto;
-    max-height: 700px;
-    
+    height: auto; /* Permite que a altura seja ajustada com o conteúdo */
+    min-height: 400px; /* Altura mínima para evitar que o container fique muito pequeno */
+    max-height:auto; /* Limite de altura máxima */
 }
+
 
 /* Estilizando o título */
 h1 {
     color: #4CAF50;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
-
 
 button {
     background-color: #4CAF50;
@@ -49,246 +44,29 @@ button {
 }
 button:hover {
     transform: scale(1.01);
-    background-color: #4CAF50;
+    background-color: #45a049;
 }
 .deletar {
-/* Estilizando o botão */
-
-background-color: transparent;
-color: white;
-    border: none;
-    padding-left: 25px;
+    background-color: transparent;
+    color: white;
+    padding-left: 20px;
     font-size: 20px;
     border-radius: 8px;
     cursor: pointer;
+    width: 60px;
+    height: 50px;
+    border-left: 50px;
 }
 
-
-
-button:hover {
-    background-color: #45a049;
+.botaoInicial {
+    width: 50px;
+     display: flex;
+      justify-content: center;
+    align-items: center;
 }
 
-/* Estilizando o botão de salvar */
-.buttonSalvarbtn {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 80%;          /* Largura aumentada */
-    max-width: 600px;    /* Define um limite para não estourar o layout */
-    margin: 10px auto;   /* Centraliza horizontalmente */
-    padding: 12px 20px;
-    text-align: center;
-    transition: background-color 0.3s;
-}
-
-
-
-/* Estilizando a lista (ul) */
-ul {
-    list-style: none; /* Remove as bolinhas padrão */
-    padding: 0;
-    margin: 10px auto;
-    max-width: 95%;
-}
-
-/* Estilizando os itens da lista (li) */
-ul li {
-    background-color: #4CAF50;
-    color: white;
-    margin-bottom: 10px;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
-    transition: transform 0.0s;
-    cursor: pointer;
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    gap: 15px; /* Espaço entre os elementos */
-    height: 40px;
-}
-
-ul li:hover {
-    transform: scale(1.01);
-    background-color: #45a049;
-}
-
-/* Estilo base para os inputs */
-input[type="text"], 
-input[type="email"], 
-input[type="password"], 
-input[type="number"] {
-    width: 420px;
-    padding: 12px 15px;
-    margin-bottom: 0px;
-    border: 2px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-    
-}
-
-/* Efeito ao focar no input */
-input[type="text"]:focus, 
-input[type="email"]:focus, 
-input[type="password"]:focus, 
-input[type="number"]:focus {
-    border-color: #4CAF50;
-    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
-    outline: none;
-}
-input:hover {
-    transform: scale(1.01);
-    background-color: #ffffff;
-}
-/* Estilo para o placeholder (texto dentro do input) */
-input::placeholder {
-    color: #9ca3af;
-    font-style: italic;
-}
-
-/* Estilizando o input com classe .tituloEnquete */
-input.tituloEnquete {
-    width: 90%; /* Defina o valor que desejar */
-    padding: 12px 15px;
-    margin-bottom: 0px;
-    border: 2px solid #d1d5db;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-/* Estilo da div com a classe .adicionarOpcoes */
-.adicionarOpcoes {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding-top: 5px;
-    padding-bottom: 30px;
-    display: flex;
-    flex-direction: row;      
-    gap: 15px;                
-    align-items: center;       
-    justify-content: center; 
-    width: 90%;               
-    max-width: 600px;         
-    margin: 0 auto;           
-}
-
-
-/* Estilizando apenas o botão específico .buttonAdicionar */
-.buttonAdicionar {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 90%;
-    transition: background-color 0.3s;
-
-}
-.buttonAdicionar:hover {
-    transform: scale(1.01);
-    background-color: #4CAF50;
-}
-.buttonAdicionar:hover {
-    background-color: #45a049;
-}
-
-/* Estilizando o fieldset rolável */
-fieldset {
-    border: 1px solid #4CAF50;
-    border-radius: 8px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-top: 0px;
-    margin-bottom: 10px;
-    width: 98%;
-    height: 80px;              /* Define a altura máxima do fieldset */
-    overflow-y: auto;           /* Ativa o scroll vertical se ultrapassar o limite */
-    scrollbar-width: thin;      /* Estiliza a largura da barra de rolagem no Firefox */
-    scrollbar-color: #4CAF50 #f7f4f4; /* Cores da barra no Firefox */
-}
-
-
-
-
-
-
-fieldset.opcoesFieldset {
-    border: 1px solid #4CAF50;
-    border-radius: 8px;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-top: 0px;
-    margin-bottom: 10px;
-    width: 98%;
-    height: auto;
-    min-height: 90px;    
-    max-height: 250px;          /* Define a altura máxima do fieldset */
-    overflow-y: auto;           /* Ativa o scroll vertical se ultrapassar o limite */
-    scrollbar-width: thin;      /* Estiliza a largura da barra de rolagem no Firefox */
-    scrollbar-color: #4CAF50 #f7f4f4; /* Cores da barra no Firefox */
-}
-
-
-/* Estilizando a legenda do fieldset */
-legend {
-    font-size: 18px;
-    font-weight: bold;
-    color: #4CAF50;  /* Cor verde para a legenda */
-    padding-left: 5px;
-    margin-bottom: 5px;
-    display: inline-block;
-    margin-top: 5px;
-    text-align: left;
-}
-/* Estilo para a barra de rolagem no Chrome, Edge e Safari */
-fieldset::-webkit-scrollbar {
-    width: 8px;
-}
-
-fieldset::-webkit-scrollbar-thumb {
-    background-color: #4CAF50;
-    border-radius: 4px;
-}
-
-fieldset::-webkit-scrollbar-track {
-    background: #f7f4f4;
-}
-.tab {
-    display: inline-block;
-    margin: 5px;
-    padding: 0px 0px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.tab:hover {
-    background-color: #45a049;
-}
-
-
-
-/* Conteúdo das páginas */
-.page {
-    display: none;
-}
-
-.page.active {
-    display: block;
-}
-
-
+.buttonSalvarbtn,
+.buttonAdicionar,
 .buttonPequeno {
     background-color: #4CAF50;
     color: white;
@@ -296,10 +74,212 @@ fieldset::-webkit-scrollbar-track {
     font-size: 16px;
     border-radius: 8px;
     cursor: pointer;
-    width: 50%;          /* Largura aumentada */
-    max-width: 100px;    /* Define um limite para não estourar o layout */
-    margin: 10px auto;   /* Centraliza horizontalmente */
+    width: 60%;
+    max-width: 600px;
+    margin: 10px auto;
     padding: 12px 20px;
     text-align: center;
     transition: background-color 0.3s;
+}
+
+.buttonAdicionar:hover,
+.buttonSalvarbtn:hover,
+.buttonPequeno:hover {
+    background-color: #45a049;
+    transform: scale(1.01);
+}
+
+/* Estilizando a lista (ul) */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px auto;
+    max-width: 95%;
+}
+
+ul li {
+    background-color: #333;
+    color: #ffffff;
+    margin-bottom: 18px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height: 40px;
+}
+ul li:hover {
+    transform: scale(1.01);
+    background-color: #444;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input.tituloEnquete {
+    width: 420px;
+    padding: 12px 15px;
+    margin-bottom: 0px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #2c2c2c;
+    color: #f5f5f5;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input.tituloEnquete:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+    outline: none;
+}
+
+input:hover {
+    background-color: #333;
+}
+
+input::placeholder {
+    color: #bbb;
+    font-style: italic;
+}
+
+/* Fieldsets */
+fieldset,
+fieldset.opcoesFieldset {
+    border: 1px solid #4CAF50;
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 10px;
+    width: 98%;
+    background-color: #2b2b2b;
+    color: #f5f5f5;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #4CAF50 #333;
+}
+
+legend {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4CAF50;
+    padding-left: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    text-align: left;
+}
+
+/* Scrollbar */
+fieldset::-webkit-scrollbar {
+    width: 8px;
+}
+fieldset::-webkit-scrollbar-thumb {
+    background-color: #4CAF50;
+    border-radius: 4px;
+}
+fieldset::-webkit-scrollbar-track {
+    background: #333;
+}
+
+
+
+.tab {
+    display: inline-block;
+    margin: 5px;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.tab:hover {
+    background-color: #45a049;
+}
+
+/* Conteúdo das páginas */
+.page {
+    display: none;
+}
+.page.active {
+    display: block;
+}
+
+h3 {
+    color: #e0e0e0;
+}
+
+.textoDinamic {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+    padding-left: 20px;
+}
+
+/* Radio estilizado */
+input.radio-estilizado {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #222;
+    border: 2px solid #777;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+input.radio-estilizado:checked {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.4);
+}
+
+input.radio-estilizado:checked ~ h3 {
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+input.tituloEnquete {
+    width: 90%;
+    max-width: 550px;
+    display: block;
+    padding: 18px 18px;
+    font-size: 18px;
+    background-color: #2c2c2c;
+    border: 2px solid #444;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 15px; /* Espaçamento entre os itens */
+    margin-left: 10px;
+}
+.input-button-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* espaço entre o input e o botão */
+    flex-wrap: wrap; /* permite quebrar linha em telas menores */
+}
+
+P {
+    margin-top: 5px;
+    color: #777;
+}
+
+.tornarInvisivel {
+    display: none;
+}
+
+a {
+    text-decoration: none;
 }
