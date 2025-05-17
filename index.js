@@ -185,7 +185,7 @@ window.salvarDadosNoFirebase = function () {
 
     set(referencia, dadosParaSalvar)
         .then(() => {
-            const linkCompartilhamento = `${window.location.origin}/TAREFA%20DO%20MATEUS/yourTask.html?ref=${codigoUnico}`;
+            const linkCompartilhamento = `${window.location.origin}/taskmateus/yourTask.html?ref=${codigoUnico}`;
             document.getElementById("linkCompartilhar").textContent = linkCompartilhamento;
             console.log("Link de convite:", linkCompartilhamento);
             showPage('tab2', this);

@@ -1,6 +1,13 @@
 // Variável global para armazenar os IDs dos inputs
 let idsDosInputs = [];
-let contadorInput = 1; // Contador para IDs dos inputs
+let contadorInput = 1; // Contador para IDs dos inputs// Recupera o código armazenado no localStorage
+let codigoSalvo = localStorage.getItem('codigo');
+let juntar = "enquetes" + "/" + codigoSalvo
+
+    // Exibe o valor no console
+    console.log('Código salvo no localStorage:', codigoSalvo);
+
+
   import { update } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 import { database } from './firebase-config.js';
 import { ref, get, child, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
@@ -106,7 +113,7 @@ window.limpar = function () {
 
 
 // Referência dinâmica (você pode alterar o valor dessa variável conforme necessário)
-let rotulo = 'enquetes/f5ac-743b-4f33';
+let rotulo = juntar;
 
 const dbRef = ref(database);
 

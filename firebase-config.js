@@ -22,11 +22,17 @@ export const database = getDatabase(app);
 // Captura os parâmetros da URL
 const params = new URLSearchParams(window.location.search);
 const codigoConvite = params.get('ref');
-
 if (codigoConvite) {
     console.log("Código de convite detectado:", codigoConvite);
-    verificarConviteNoFirebase(codigoConvite);
-   
     
+    // Apaga o código anterior do localStorage (se houver)
+    localStorage.removeItem('codigo');
     
+    // Salva o novo código no localStorage
+    localStorage.setItem('codigo', codigoConvite);
+
+
+
+    // Redireciona o usuário para outro link
+    window.location.href = 'https://danieldss030225.github.io/taskmateus/yourTask.html'; // Substitua com o URL desejado
 }
