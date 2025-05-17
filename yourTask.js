@@ -303,7 +303,7 @@ let dadosGraficoCircular = [];
 let dadosGraficoLinear = [];
 
 // Função para gerar o gráfico circular (pie chart)
-function gerarGraficoCircular() {
+  function gerarGraficoCircular() {
   const ctx = document.getElementById('pieChart').getContext('2d');
   new Chart(ctx, {
     type: 'pie',
@@ -325,8 +325,19 @@ function gerarGraficoCircular() {
             label: function(tooltipItem) {
               const total = tooltipItem.dataset.data.reduce((a, b) => a + b, 0);
               const percentage = Math.round((tooltipItem.raw / total) * 100);
-              return `${tooltipItem.label}: ${percentage}%`;
+              return `${tooltipItem.label}: ${tooltipItem.raw} votos (${percentage}%)`;
             }
+          }
+        },
+        datalabels: {
+          formatter: function(value, context) {
+            // Mostra os votos diretamente nas fatias do gráfico
+            return value + ' votos';
+          },
+          color: '#fff',
+          font: {
+            weight: 'bold',
+            size: 14
           }
         }
       }
@@ -336,7 +347,7 @@ function gerarGraficoCircular() {
 
 
 // Função para gerar gráfico linear horizontal (bar chart)
-function gerarGraficoLinear() {
+        function gerarGraficoLinear() {
   const ctx = document.getElementById('barChart').getContext('2d');
   new Chart(ctx, {
     type: 'bar',
@@ -359,14 +370,28 @@ function gerarGraficoLinear() {
             label: function(tooltipItem) {
               const total = tooltipItem.dataset.data.reduce((a, b) => a + b, 0);
               const percentage = Math.round((tooltipItem.raw / total) * 100);
-              return `${tooltipItem.label}: ${percentage}%`;
+              return `${tooltipItem.label}: ${tooltipItem.raw} votos (${percentage}%)`;
             }
+          }
+        },
+        datalabels: {
+          anchor: 'end',
+          align: 'end',
+          formatter: function(value, context) {
+            // Mostra os votos no final de cada barra
+            return value + ' votos';
+          },
+          color: '#fff',
+          font: {
+            weight: 'bold',
+            size: 14
           }
         }
       }
     }
   });
 }
+
 
 // Função para obter dados do Firebase e gerar os gráficos
 

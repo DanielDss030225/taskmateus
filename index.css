@@ -299,16 +299,6 @@ a {
   padding: 0;
 }
 
-/* Estilo para os gráficos individuais */
-#pieChart, #barChart {
-  max-width: 500px; /* Tamanho máximo dos gráficos */
-  width: 100%; /* O gráfico se ajusta ao tamanho do contêiner */
-  height: 300px; /* Altura fixa do gráfico */
-  margin: 0 auto; /* Centraliza o gráfico */
-  background-color: #fff; /* Cor de fundo branca para o gráfico */
-  border-radius: 10px; /* Bordas arredondadas para o gráfico */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras suaves para dar um efeito de profundidade */
-}
 
 /* Ajuste para telas menores */
 @media (max-width: 768px) {
@@ -321,4 +311,68 @@ a {
     width: 90%; /* Ajusta o tamanho dos gráficos para 90% da largura da tela */
     max-width: 400px; /* Define um tamanho máximo menor em telas pequenas */
   }
+}
+
+
+/* Estilo para os gráficos individuais */
+#pieChart {
+  max-width: 500px; /* Tamanho máximo dos gráficos */
+  width: 100%; /* O gráfico se ajusta ao tamanho do contêiner */
+  height: 300px; /* Altura fixa do gráfico */
+  margin: 0 auto; /* Centraliza o gráfico */
+  background-color: #333; /* Cor de fundo para o gráfico */
+  border-radius: 10px; /* Bordas arredondadas para o gráfico */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras suaves para dar um efeito de profundidade */
+}
+
+/* Ajustar as cores do gráfico de pizza */
+#pieChart canvas {
+  background-color: #333; /* Fundo escuro para combinar com o tema */
+}
+
+#pieChart .chartjs-render-monitor {
+  background-color: #333 !important; /* Garantir fundo consistente */
+}
+
+#pieChart .chartjs-tooltip {
+  background-color: #4CAF50; /* Verde para as tooltips */
+  color: white;
+}
+
+#pieChart .chartjs-tooltip .tooltip-body {
+  color: white; /* Cor branca para o texto dentro da tooltip */
+}
+/* Estilo para o gráfico de barras */
+#barChart {
+  max-width: 500px; /* Tamanho máximo do gráfico */
+  width: 100%; /* O gráfico se ajusta ao tamanho do contêiner */
+  height: 300px; /* Altura fixa do gráfico */
+  margin: 0 auto; /* Centraliza o gráfico */
+  background-color: #333; /* Fundo escuro para combinar com o tema */
+  border-radius: 10px; /* Bordas arredondadas para o gráfico */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras suaves para dar um efeito de profundidade */
+}
+
+/* Personalizando as cores das barras */
+#barChart .chartjs-render-monitor {
+  background-color: #333; /* Fundo escuro */
+}
+
+#barChart canvas {
+  background-color: #333; /* Fundo escuro */
+}
+
+/* Definindo cores para as barras */
+#barChart .bar {
+  background-color: #4CAF50 !important; /* Verde para as barras */
+}
+
+/* Alterando as cores das labels de dados das barras */
+#barChart .chartjs-tooltip {
+  background-color: #4CAF50; /* Tooltip em verde */
+  color: white;
+}
+
+#barChart .chartjs-tooltip .tooltip-body {
+  color: white;
 }
