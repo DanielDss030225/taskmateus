@@ -1,3 +1,9 @@
+
+
+  import { update } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+import { database } from './firebase-config.js';
+import { ref, get, child, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
 // Variável global para armazenar os IDs dos inputs
 let idsDosInputs = [];
 let contadorInput = 1; // Contador para IDs dos inputs// Recupera o código armazenado no localStorage
@@ -7,10 +13,6 @@ let juntar = "enquetes" + "/" + codigoSalvo
     // Exibe o valor no console
     console.log('Código salvo no localStorage:', codigoSalvo);
 
-
-  import { update } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
-import { database } from './firebase-config.js';
-import { ref, get, child, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
 // Função para atualizar os placeholders após adicionar ou remover
 function atualizarPlaceholders() {
@@ -293,3 +295,107 @@ window.salvarVotos = async function () {
     alert("Erro ao salvar votos. Verifique o console.");
   }
 };
+
+
+
+// Variáveis para armazenar dados para os gráficos
+let dadosGraficoCircular = [];
+let dadosGraficoLinear = [];
+
+// Função para gerar o gráfico circular (pie chart)
+function gerarGraficoCircular() {
+  const ctx = document.getElementById('pieChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: dadosGraficoCircular.map(item => item.nome),
+      datasets: [{
+        label: 'Votos',
+        data: dadosGraficoCircular.map(item => item.votos),
+        backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A8', '#FFD700'],
+        borderColor: '#fff',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function(tooltipItem) {
+              const total = tooltipItem.dataset.data.reduce((a, b) => a + b, 0);
+              const percentage = Math.round((tooltipItem.raw / total) * 100);
+              return `${tooltipItem.label}: ${percentage}%`;
+            }
+          }
+        }
+      }
+    }
+  });
+}
+
+
+// Função para gerar gráfico linear horizontal (bar chart)
+function gerarGraficoLinear() {
+  const ctx = document.getElementById('barChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: dadosGraficoLinear.map(item => item.nome),
+      datasets: [{
+        label: 'Votos',
+        data: dadosGraficoLinear.map(item => item.votos),
+        backgroundColor: '#007bff',
+        borderColor: '#0056b3',
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      indexAxis: 'y', // Para gráfico horizontal
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function(tooltipItem) {
+              const total = tooltipItem.dataset.data.reduce((a, b) => a + b, 0);
+              const percentage = Math.round((tooltipItem.raw / total) * 100);
+              return `${tooltipItem.label}: ${percentage}%`;
+            }
+          }
+        }
+      }
+    }
+  });
+}
+
+// Função para obter dados do Firebase e gerar os gráficos
+
+get(child(dbRef, rotulo)).then((snapshot) => {
+  if (snapshot.exists()) {
+    const lista = snapshot.val();
+
+    // Processar os dados para os gráficos
+    Object.entries(lista).forEach(([chave, valor]) => {
+      if (Array.isArray(valor)) {
+        // Adicionar os dados para o gráfico circular e linear
+        const nome = valor[0];
+        const votos = valor[1];
+
+        dadosGraficoCircular.push({ nome, votos });
+        dadosGraficoLinear.push({ nome, votos });
+      }
+    });
+
+    // Gerar os gráficos
+    gerarGraficoCircular();
+    gerarGraficoLinear();
+
+  } else {
+    console.warn("Nenhum dado encontrado em:", rotulo);
+  }
+}).catch((error) => {
+  console.error("Erro ao buscar dados:", error);
+});
+
+// Restante do seu código para manipulação da enquete, como salvar votos, etc.
+

@@ -24,44 +24,45 @@
 <div id="tab1" class="page active">
 <!-- pagina criar enquete-->
 <h1 id="textoDaTarefa">
-Sua tarefa
+Resultados
 </h1>
    <p class="tornarInvisivel" id="codigo"></p> 
 <p class="tornarInvisivel"  id="opcaoEscolhida">OPÇÃO ESCOLHIDA</p>
-<p>Participe desta enquete deixando o seu voto abaixo. </p>
+<p>Acompanhe abaixo o resultado gráfico da votação </p>
 
 </div>               
-<fieldset class="opcoesFieldset">    <!-- Fildset para as opções  -->      
-<legend> Vote:</legend>
-<ul class="fundoEnquetes" id="listaDeEnquetes">
 
-</ul>
-</fieldset>
+ 
 
-<div class="adicionarOpcoes">
-<button class="buttonAdicionar" onclick="salvarVotos() "> Registrar meu voto! </button>
-<button  onclick="window.location.href='resultados.html'"> Resultados</button>
+    <div id="chartContainer">
+      <!-- Gráfico Circular (Pie Chart) -->
+  <canvas id="pieChart" width="50" height="50"></canvas>
+<canvas id="barChart" width="50" height="50"></canvas>
+    </div>
+  
 
 
-        
+    
+        <button class="buttonAdicionar" onclick="window.location.href='yourTask.html'">
+  Clique para voltar à enquete
+</button>
+
+
+
+
+
 
 </div>
-
-<a href="index.html">
-  <p>Gostou desta enquete? Clique e crie uma igual!</p>
-</a></div>
-<!--final da página 01-->
-<!--final da página 01-->
-<!--final da página 01-->
-
-
 
 
 
 <!--modules-->
 <script  type="module" src="firebase-config.js" defer> </script> 
 <script type="module"  src="index.js" defer>  </script> 
-<script type="module"  src="yourTask.js" defer>  </script> 
+<script type="module"  src="yourTask.js" defer>  </script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ 
+
 
 </div> 
 </body>

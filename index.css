@@ -289,3 +289,36 @@ a {
     text-decoration: none;
 }
 
+/* Estilo geral para o contêiner dos gráficos */
+#chartContainer {
+  display: flex;
+  justify-content: space-around; /* Alinha os gráficos lado a lado */
+  flex-wrap: wrap; /* Permite que os gráficos se movam para a linha seguinte em telas menores */
+  gap: 20px; /* Espaçamento entre os gráficos */
+  margin: 20px 0; /* Espaçamento externo */
+  padding: 0;
+}
+
+/* Estilo para os gráficos individuais */
+#pieChart, #barChart {
+  max-width: 500px; /* Tamanho máximo dos gráficos */
+  width: 100%; /* O gráfico se ajusta ao tamanho do contêiner */
+  height: 300px; /* Altura fixa do gráfico */
+  margin: 0 auto; /* Centraliza o gráfico */
+  background-color: #fff; /* Cor de fundo branca para o gráfico */
+  border-radius: 10px; /* Bordas arredondadas para o gráfico */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras suaves para dar um efeito de profundidade */
+}
+
+/* Ajuste para telas menores */
+@media (max-width: 768px) {
+  #chartContainer {
+    flex-direction: column; /* Empilha os gráficos verticalmente em telas menores */
+    align-items: center; /* Centraliza os gráficos */
+  }
+
+  #pieChart, #barChart {
+    width: 90%; /* Ajusta o tamanho dos gráficos para 90% da largura da tela */
+    max-width: 400px; /* Define um tamanho máximo menor em telas pequenas */
+  }
+}
