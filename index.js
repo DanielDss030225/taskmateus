@@ -219,3 +219,4 @@ window.compartilharLink = function () {
 window.recarregarPagina = function () {
     window.location.reload();
 };
+

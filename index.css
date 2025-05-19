@@ -28,7 +28,6 @@ body {
     min-height: 400px; /* Altura mínima para evitar que o container fique muito pequeno */
     max-height:auto; /* Limite de altura máxima */
     margin-top: 80px;
-                visibility: hidden; /* Ou use display: none; para ocultar completamente */
 
 }
 
