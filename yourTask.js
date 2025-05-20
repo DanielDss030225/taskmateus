@@ -1,6 +1,6 @@
 
-import { update } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 import { database } from './firebase-config.js';
+import { update } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 import { ref, get, child, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
 
