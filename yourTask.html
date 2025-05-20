@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sua tarefa
+    <title>Sua Enquete
 
     </title>
     <link rel="stylesheet" href="index.css">
 
 </head>
+
+
+
+
+
 <body>
 
-  
-<div style="display: none;" id="containerTask" class="container"> 
+  <!-- Tela de carregamento com spinner e alerta -->
+
+
+<div  id="containerTask" class="container"> 
+<div id="spinnerAlerta" class="spinnerClass" >
+  <div class="spinner"></div>
+  <p style="color: white; font-size: 20px; margin-top: 20px;">Carregando dados, por favor aguarde...</p>
+</div>
 
 <div id="tab1" class="page active">
 <h1 id="textoDaTarefa">
-Sua tarefa
+Carregando...
 </h1>
-   <p class="tornarInvisivel" id="codigo"></p> 
-<p class="tornarInvisivel"  id="opcaoEscolhida">OPÇÃO ESCOLHIDA</p>
-<p>Participe desta enquete deixando o seu voto abaixo. </p>
+   <p style="display:none;" id="codigo"></p> 
+<p  style="display:none;" id="opcaoEscolhida">OPÇÃO ESCOLHIDA</p>
+<p  >Participe desta enquete deixando o seu voto abaixo. </p>
 
 </div>               
 <fieldset class="opcoesFieldset">        
@@ -46,8 +57,9 @@ Sua tarefa
 
 
 
-<script type="module" src="index.js" defer>  </script> 
-<script type="module" src="yourTask.js" defer>  </script>
+<script  type="module" src="firebase-config.js" defer> </script> 
+<script type="module"  src="index.js" defer>  </script> 
+<script type="module"  src="yourTask.js" defer>  </script> 
 
 </div> 
 </body>

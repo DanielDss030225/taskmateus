@@ -15,13 +15,18 @@
 
   
 <div id="containerResultados" class="container">
-<div id="fundoGeral" style="display: none;">
+    <div id="spinnerAlerta" class="spinnerClass" >
+  <div class="spinner"></div>
+  <p style="color: white; font-size: 20px; margin-top: 20px;">Carregando dados, por favor aguarde...</p>
+</div>
+
+<div id="fundoGeral">
 <div id="tab1" class="page active">
 <h1 id="textoDaTarefa">
 Resultados
 </h1>
 <p class="tornarInvisivel" id="codigo"></p> 
-<p class="tornarInvisivel"  id="opcaoEscolhida">OPÇÃO ESCOLHIDA</p>
+<p class="tornarInvisivel" style="display:none;"  id="opcaoEscolhida">OPÇÃO ESCOLHIDA</p>
 <p>Acompanhe abaixo o resultado gráfico da votação </p>
 
 </div>               
@@ -42,7 +47,7 @@ Clique para voltar à enquete
 
 
 <script type="module" src="index.js" defer>  </script> 
-<script type="module" src="yourTask.js" defer>  </script>
+<script type="module" src="resultados.js" defer>  </script>
 
 
 

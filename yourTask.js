@@ -1,6 +1,6 @@
 
-import { database } from './firebase-config.js';
 import { update } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+import { database } from './firebase-config.js';
 import { ref, get, child, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
 
@@ -17,8 +17,6 @@ const API_URL = BASE_URL + '/api';
 console.log('API rodando em:', API_URL);
 
 
-
-
 const params = new URLSearchParams(window.location.search);
 const codigoConvite = params.get('ref');
 if (codigoConvite) {
@@ -32,16 +30,14 @@ if (codigoConvite) {
     window.location.href = BASE_URL ; // Substitua com o URL desejado
 }
 
+mostrarSpinnerComAlerta()
+function mostrarSpinnerComAlerta() {
+  document.getElementById('spinnerAlerta').style.display = 'flex';
+}
 
-
-
-
-
-
-
-
-
-
+function esconderSpinnerComAlerta() {
+  document.getElementById('spinnerAlerta').style.display = 'none';
+}
 
 
 let codigoSalvo = localStorage.getItem('codigo');
@@ -86,7 +82,6 @@ function executarAcao(chave, valor, name) {
     let texto = document.createElement("h3");
     let texto02 = document.createElement("h3");
 
-    document.getElementById("containerTask").style.display = "block";
    
     const textoId = `${chave}_texto`;
     const texto02Id = `${chave}_votos`;
@@ -109,7 +104,7 @@ function executarAcao(chave, valor, name) {
     fundo.appendChild(texto02);
     fundo.appendChild(inputRadio);
     listaDeEnquetes.appendChild(fundo);
-
+esconderSpinnerComAlerta() 
     fundo.addEventListener('click', () => {
     inputRadio.checked = true;
     inputRadio.dispatchEvent(new Event('change'));
@@ -218,126 +213,5 @@ window.salvarVotos = async function () {
 
 
 
-let dadosGraficoCircular = [];
-let dadosGraficoLinear = [];
-
-  function gerarGraficoCircular() {
-    
-  const ctx = document.getElementById('pieChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'pie',
-    data: {
-      labels: dadosGraficoCircular.map(item => item.nome),
-      datasets: [{
-        label: 'Votos',
-        data: dadosGraficoCircular.map(item => item.votos),
-        backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A8', '#FFD700'],
-        borderColor: '#fff',
-        borderWidth: 2
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label: function(tooltipItem) {
-              const total = tooltipItem.dataset.data.reduce((a, b) => a + b, 0);
-              const percentage = Math.round((tooltipItem.raw / total) * 100);
-              return `${tooltipItem.label}: ${tooltipItem.raw} votos (${percentage}%)`;
-            }
-          }
-        },
-        datalabels: {
-          formatter: function(value) {
-            return value + ' votos';
-          },
-          color: '#fff',
-          font: {
-            weight: 'bold',
-            size: 14
-          }
-        }
-      }
-    }
-  });
-  
-}
-
-
-        function gerarGraficoLinear() {
-  const ctx = document.getElementById('barChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: dadosGraficoLinear.map(item => item.nome),
-      datasets: [{
-        label: 'Votos',
-        data: dadosGraficoLinear.map(item => item.votos),
-        backgroundColor: '#007bff',
-        borderColor: '#0056b3',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      indexAxis: 'y', 
-      plugins: {
-        tooltip: {
-          callbacks: {
-            label: function(tooltipItem) {
-              const total = tooltipItem.dataset.data.reduce((a, b) => a + b, 0);
-              const percentage = Math.round((tooltipItem.raw / total) * 100);
-              return `${tooltipItem.label}: ${tooltipItem.raw} votos (${percentage}%)`;
-            }
-          }
-        },
-        datalabels: {
-          anchor: 'end',
-          align: 'end',
-          formatter: function(value) {
-            return value + ' votos';
-          },
-          color: '#fff',
-          font: {
-            weight: 'bold',
-            size: 14
-          }
-        }
-      }
-    }
-  });
-
-}
-
-
-get(child(dbRef, rotulo)).then((snapshot) => {
-  if (snapshot.exists()) {
-    const lista = snapshot.val();
-
-    Object.entries(lista).forEach(([chave, valor]) => {
-      if (Array.isArray(valor)) {
-        const nome = valor[0];
-        const votos = valor[1];
-
-        dadosGraficoCircular.push({ nome, votos });
-        dadosGraficoLinear.push({ nome, votos });
-        console.log(nome);
-        console.log(votos);
-      }
-    });
-
-    gerarGraficoCircular();
-    gerarGraficoLinear();
-   document.getElementById("fundoGeral").style.display = "Block";
- 
-
-  } else {
-    console.warn("Nenhum dado encontrado em:", rotulo);
-  }
-}).catch((error) => {
-  
-  console.error("Erro ao buscar dados:", error);
-});
 
 

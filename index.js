@@ -2,6 +2,9 @@
 import { database } from './firebase-config.js';
 import { ref, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
+
+
+
 let idsDosInputs = [];
 let contadorInput = 1;
 
