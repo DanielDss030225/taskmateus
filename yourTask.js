@@ -1,12 +1,8 @@
 
-
-  import { update } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+import { update } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 import { database } from './firebase-config.js';
 import { ref, get, child, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
-// Variável global para armazenar os IDs dos inputs
-let idsDosInputs = [];
-let contadorInput = 1; // Contador para IDs dos inputs// Recupera o código armazenado no localStorage
 let codigoSalvo = localStorage.getItem('codigo');
 let juntar = "enquetes" + "/" + codigoSalvo
 
@@ -14,97 +10,6 @@ let juntar = "enquetes" + "/" + codigoSalvo
     console.log('Código salvo no localStorage:', codigoSalvo);
 
 
-// Função para atualizar os placeholders após adicionar ou remover
-function atualizarPlaceholders() {
-    const inputs = document.querySelectorAll('#listaDeEnquetes input');
-    inputs.forEach((input, index) => {
-        if (input.id !== "input01") {
-            const numero = (index + 1).toString().padStart(2, '0');
-            input.placeholder = `Opção ${numero}`;
-        }
-    });
-}
-
-
-// Função para adicionar uma nova opção
-window.adicionarOpcoes = function () {
-    let listaDeEnquetes = document.getElementById("listaDeEnquetes");
-
-    if (listaDeEnquetes.children.length >= 30) {
-        alert("Máximo de 30 opções atingido.");
-        return;
-    }
-
-    // Cria os elementos necessários
-    let fundo = document.createElement("li");
-    let inputTexto = document.createElement('input');
-    let btnRemover = document.createElement('button');
-
-    // Configurações do input
-    inputTexto.type = 'text';
-    inputTexto.placeholder = `Opção ${listaDeEnquetes.children.length + 1}`;
-
-    // Configurações do botão
-    btnRemover.textContent = 'X';
-
-    // Gera um ID único para o input (diferente do <li>)
-    const idInput = `input-opcao-${contadorInput}`;
-    contadorInput++;
-
-    // Define os IDs nos elementos
-    fundo.id = `li-opcao-${contadorInput}`; // ID da LI é diferente
-    inputTexto.id = idInput;               // ID do input é único e separado
-
-    // Adicionando o ID do input ao array global
-    idsDosInputs.push(idInput);
-
-    // Adicionando os elementos no <li> e depois na lista
-    fundo.appendChild(inputTexto);
-    fundo.appendChild(btnRemover);
-    listaDeEnquetes.appendChild(fundo);
-
-    // Evento de clique para remover o <li>, exceto o primeiro item com id "input01"
-    btnRemover.addEventListener('click', () => {
-        if (fundo.id !== "input01") {
-            // Remove o ID do array global antes de remover o elemento
-            const index = idsDosInputs.indexOf(inputTexto.id);
-            if (index > -1) {
-                idsDosInputs.splice(index, 1); // Remove o ID do array
-            }
-            listaDeEnquetes.removeChild(fundo);
-            atualizarPlaceholders();  // Atualiza os placeholders após remoção
-
-            // Exibe o array atualizado no console
-            console.log("Array de IDs após remoção:", idsDosInputs);
-        }
-    });
-
-    // Exibe o array atualizado no console
-    console.log("Array de IDs após adição:", idsDosInputs);
-
-    // Atualiza os placeholders após adicionar um novo item
-    atualizarPlaceholders();
-}
-
-// Função para limpar todos os itens, exceto o primeiro
-window.limpar = function () {
-    const listaDeEnquetes = document.getElementById("listaDeEnquetes");
-
-    // Mantém o primeiro item com id "input01"
-    const primeiroItem = document.getElementById("input01");
-    listaDeEnquetes.innerHTML = ''; // Remove todos os itens
-
-    // Reinsere o primeiro item
-    if (primeiroItem) {
-        listaDeEnquetes.appendChild(primeiroItem.closest('li'));
-    }
-
-    // Atualiza o array de IDs para manter apenas o primeiro item
-    idsDosInputs = [primeiroItem.id];
-
-    // Exibe o array atualizado no console
-    console.log("Array de IDs após limpar:", idsDosInputs);
-}
 
 
 
@@ -114,7 +19,8 @@ window.limpar = function () {
 
 
 
-// Referência dinâmica (você pode alterar o valor dessa variável conforme necessário)
+
+
 let rotulo = juntar;
 
 const dbRef = ref(database);
@@ -137,7 +43,7 @@ get(child(dbRef, rotulo)).then((snapshot) => {
 
 
 
-let ultimoSelecionado = null; // Armazena o último input selecionado
+let ultimoSelecionado = null; 
 
 function executarAcao(chave, valor, name) {
   if (chave === "Titulo") {
@@ -153,17 +59,20 @@ function executarAcao(chave, valor, name) {
   } else if (Array.isArray(valor)) {
     let listaDeEnquetes = document.getElementById("listaDeEnquetes");
 
-    // Cria elementos
     let fundo = document.createElement("li");
     let inputRadio = document.createElement("input");
     let texto = document.createElement("h3");
     let texto02 = document.createElement("h3");
 
+       document.getElementById("containerTask").style.display = "block";
+   
+
+
     const textoId = `${chave}_texto`;
     const texto02Id = `${chave}_votos`;
 
-    texto.textContent = valor[0];         // Nome da opção
-    texto02.textContent = valor[1];       // Quantidade de votos
+    texto.textContent = valor[0];         
+    texto02.textContent = valor[1];       
 
     texto.id = textoId;
     texto02.id = texto02Id;
@@ -171,7 +80,7 @@ function executarAcao(chave, valor, name) {
     inputRadio.id = chave;
     inputRadio.type = 'radio';
     inputRadio.name = name || "grupo-enquete";
-    inputRadio.value = valor[0]; // apenas o valor da opção
+    inputRadio.value = valor[0];
     inputRadio.classList.add('radio-estilizado');
 
     texto.classList.add("textoDinamic");
@@ -181,15 +90,12 @@ function executarAcao(chave, valor, name) {
     fundo.appendChild(inputRadio);
     listaDeEnquetes.appendChild(fundo);
 
-    // Faz o clique no <li> selecionar o radio correspondente
     fundo.addEventListener('click', () => {
       inputRadio.checked = true;
       inputRadio.dispatchEvent(new Event('change'));
     });
-
-    // Evento de mudança do input
+    
     inputRadio.addEventListener('change', function () {
-      // Impede votação duplicada na mesma opção
       if (ultimoSelecionado === this) {
         console.log("Opção já selecionada. Nenhuma ação tomada.");
         return;
@@ -200,7 +106,6 @@ function executarAcao(chave, valor, name) {
         destino.textContent = valor[0];
       }
 
-      // Decrementa votos da opção anterior
       if (ultimoSelecionado) {
         const idAnterior = `${ultimoSelecionado.id}_votos`;
         const votosAnterior = document.getElementById(idAnterior);
@@ -210,14 +115,12 @@ function executarAcao(chave, valor, name) {
         }
       }
 
-      // Incrementa votos da opção atual
       const votosAtual = document.getElementById(texto02Id);
       if (votosAtual) {
         let votos = parseInt(votosAtual.textContent, 10) || 0;
         votosAtual.textContent = votos + 1;
       }
 
-      // Atualiza o último selecionado
       ultimoSelecionado = this;
     });
   }
@@ -232,25 +135,22 @@ async function obterIP() {
 }
 
 function formatarIP(ip) {
-  // Substitui os pontos por um caractere permitido, como hífen (-)
   return ip.replace(/\./g, '-');
 }
 
 async function verificarERegistrarVoto(rotulo) {
   const ip = await obterIP();
-  const ipFormatado = formatarIP(ip); // Formatar IP para usar como caminho
-  const ipRef = ref(database, `${rotulo}/votos/${ipFormatado}`); // Caminho seguro no Firebase
+  const ipFormatado = formatarIP(ip);
+  const ipRef = ref(database, `${rotulo}/votos/${ipFormatado}`); 
 
-  // Verifica se o IP já votou
   const snapshot = await get(ipRef);
   if (snapshot.exists()) {
     alert("Você já está participando desta enquete.");
-    return false; // Retorna false para indicar que o usuário já votou
+    return false; 
   } else {
-    // Se não houver registro, registrar o IP
     await set(ipRef, true);
     alert("Obrigado por votar!");
-    return true; // Retorna true para indicar que o voto foi registrado
+    return true; 
   }
 }
 
@@ -263,7 +163,7 @@ window.salvarVotos = async function () {
   filhos.forEach((li) => {
     const input = li.querySelector("input[type='radio']");
     const texto = li.querySelector("h3");
-    const votos = li.querySelectorAll("h3")[1]; // segundo h3 = texto02
+    const votos = li.querySelectorAll("h3")[1]; 
 
     if (input && texto && votos && input.checked) {
       const chave = input.id;
@@ -274,19 +174,16 @@ window.salvarVotos = async function () {
     }
   });
 
-  // Se o usuário não selecionou nenhuma opção, exibe um alerta
   if (Object.keys(dadosAtualizados).length === 0) {
     alert("Por favor, selecione uma opção antes de votar.");
     return;
   }
 
-  // Verificar e registrar o IP antes de salvar os votos
   const ipPodeVotar = await verificarERegistrarVoto(rotulo);
   if (!ipPodeVotar) {
-    return; // Se o usuário já votou, não salvar os votos
+    return;
   }
 
-  // Se a verificação do IP permitir, atualize os votos no Firebase
   try {
     await update(ref(database, rotulo), dadosAtualizados);
     console.log("Votos salvos com sucesso!");
@@ -298,11 +195,9 @@ window.salvarVotos = async function () {
 
 
 
-// Variáveis para armazenar dados para os gráficos
 let dadosGraficoCircular = [];
 let dadosGraficoLinear = [];
 
-// Função para gerar o gráfico circular (pie chart)
   function gerarGraficoCircular() {
   const ctx = document.getElementById('pieChart').getContext('2d');
   new Chart(ctx, {
@@ -314,7 +209,7 @@ let dadosGraficoLinear = [];
         data: dadosGraficoCircular.map(item => item.votos),
         backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33A8', '#FFD700'],
         borderColor: '#fff',
-        borderWidth: 1
+        borderWidth: 2
       }]
     },
     options: {
@@ -331,7 +226,6 @@ let dadosGraficoLinear = [];
         },
         datalabels: {
           formatter: function(value, context) {
-            // Mostra os votos diretamente nas fatias do gráfico
             return value + ' votos';
           },
           color: '#fff',
@@ -343,10 +237,10 @@ let dadosGraficoLinear = [];
       }
     }
   });
+  
 }
 
 
-// Função para gerar gráfico linear horizontal (bar chart)
         function gerarGraficoLinear() {
   const ctx = document.getElementById('barChart').getContext('2d');
   new Chart(ctx, {
@@ -363,7 +257,7 @@ let dadosGraficoLinear = [];
     },
     options: {
       responsive: true,
-      indexAxis: 'y', // Para gráfico horizontal
+      indexAxis: 'y', 
       plugins: {
         tooltip: {
           callbacks: {
@@ -378,7 +272,6 @@ let dadosGraficoLinear = [];
           anchor: 'end',
           align: 'end',
           formatter: function(value, context) {
-            // Mostra os votos no final de cada barra
             return value + ' votos';
           },
           color: '#fff',
@@ -390,37 +283,37 @@ let dadosGraficoLinear = [];
       }
     }
   });
+
 }
 
-
-// Função para obter dados do Firebase e gerar os gráficos
 
 get(child(dbRef, rotulo)).then((snapshot) => {
   if (snapshot.exists()) {
     const lista = snapshot.val();
 
-    // Processar os dados para os gráficos
     Object.entries(lista).forEach(([chave, valor]) => {
       if (Array.isArray(valor)) {
-        // Adicionar os dados para o gráfico circular e linear
         const nome = valor[0];
         const votos = valor[1];
 
         dadosGraficoCircular.push({ nome, votos });
         dadosGraficoLinear.push({ nome, votos });
+        console.log(nome);
+        console.log(votos);
       }
     });
 
-    // Gerar os gráficos
     gerarGraficoCircular();
     gerarGraficoLinear();
+                document.getElementById("fundoGeral").style.display = "Block";
+           
 
   } else {
     console.warn("Nenhum dado encontrado em:", rotulo);
   }
 }).catch((error) => {
+  
   console.error("Erro ao buscar dados:", error);
 });
 
-// Restante do seu código para manipulação da enquete, como salvar votos, etc.
 

@@ -10,17 +10,14 @@
 <body>
 
   
-<div class="container"> <!--inicio da class .container-->
+<div class="container"> 
 
   
 
 
 
-<!--inicio pagina 01-->
-<!--inicio pagina 01-->
-<!--inicio pagina 01-->
+
 <div id="tab1" class="page active">
-<!-- pagina criar enquete-->
 <h1>
 Crie uma enquete
 </h1>
@@ -28,7 +25,7 @@ Crie uma enquete
 
 <div>
     
-<fieldset class="tituloFieldset">        <!-- Fildset para o titulo da enquete-->  
+<fieldset class="tituloFieldset">         
 <legend id="titulo"> Título:</legend>
 
 <div class="opcoes">
@@ -37,7 +34,7 @@ Crie uma enquete
 </div>
 </fieldset>
 </div>               
-<fieldset class="opcoesFieldset">    <!-- Fildset para as opções  -->      
+<fieldset class="opcoesFieldset">      
 <legend> Adicione opções:</legend>
 <ul class="fundoEnquetes" id="listaDeEnquetes">
 <li> 
@@ -55,25 +52,16 @@ Crie uma enquete
 <button onclick="limpar()"class="buttonLimpar"> Limpar</button>
 </div>
 
-<!-- Esse botão farei salvar a enquete-->
 <div class="buttonSalvar">
 <button  onclick="salvarDadosNoFirebase()" class="buttonSalvarbtn"> Salvar Enquete</button>
 </div>
 </div>
-<!--final da página 01-->
-<!--final da página 01-->
-<!--final da página 01-->
 
-
-
-<!--inicio pagina 02-->
-<!--inicio pagina 02-->
-<!--inicio pagina 02-->
 <div id="tab2" class="page">
     <h1>Enquete adicionada com sucesso!</h1>
        <p>Agora compartilhe este link com os seus amigos!</p>
 
-    <fieldset class="opcoesFieldset">    <!-- Fildset para as opções  -->      
+    <fieldset class="opcoesFieldset">    
         <legend> Link da sua enquete:</legend>
         <ul class="fundoEnquetes" id="listaDeEnquetes">
        <a class="paraLi" onclick="compartilharLink()"> <li> 
@@ -93,7 +81,6 @@ Crie uma enquete
 
 
 
-<!--modules-->
 <script  type="module" src="firebase-config.js" defer> </script> 
 <script type="module"  src="index.js" defer>  </script> 
 </div> 

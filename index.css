@@ -6,16 +6,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* Garantia de altura mínima */
-    height: auto; /* Vai ajustar com JS conforme a altura da .container */
-    transform: scale(0.8); /* Reduz todos os elementos em 20% */
-    transform-origin: top center; /* Mantém o conteúdo alinhado ao topo e centro */
+    min-height: 100vh;
+    height: auto; 
+    transform: scale(0.8); 
+    transform-origin: top center; 
 }
 
-/* O resto do seu código CSS permanece o mesmo */
 
 
-/* Container centralizado */
 .container {
     background-color: #2c2c2c;
     border-radius: 12px;
@@ -24,15 +22,14 @@ body {
     max-width: 600px;
     width: 100%;
     text-align: center;
-    height: auto; /* Permite que a altura seja ajustada com o conteúdo */
-    min-height: 400px; /* Altura mínima para evitar que o container fique muito pequeno */
-    max-height:auto; /* Limite de altura máxima */
+    height: auto; 
+    min-height: 200px; 
+    max-height:auto; 
     margin-top: 80px;
 
 }
 
 
-/* Estilizando o título */
 h1 {
     color: #4CAF50;
     margin-bottom: 0px;
@@ -55,13 +52,12 @@ button:hover {
 .deletar {
     background-color: transparent;
     color: white;
-    padding-left: 20px;
     font-size: 20px;
     border-radius: 8px;
     cursor: pointer;
-    width: 60px;
-    height: 50px;
-    border-left: 50px;
+    width: 55px;
+    height: 45px;
+    margin-left: 3px;
 }
 
 .botaoInicial {
@@ -95,7 +91,6 @@ button:hover {
     transform: scale(1.01);
 }
 
-/* Estilizando a lista (ul) */
 ul {
     list-style: none;
     padding: 0;
@@ -123,13 +118,12 @@ ul li:hover {
     background-color: #444;
 }
 
-/* Inputs */
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"],
 input.tituloEnquete {
-    width: 420px;
+    width: 430px;
     padding: 12px 15px;
     margin-bottom: 0px;
     border: 2px solid #444;
@@ -159,7 +153,6 @@ input::placeholder {
     font-style: italic;
 }
 
-/* Fieldsets */
 fieldset,
 fieldset.opcoesFieldset {
     border: 1px solid #4CAF50;
@@ -184,7 +177,6 @@ legend {
     text-align: left;
 }
 
-/* Scrollbar */
 fieldset::-webkit-scrollbar {
     width: 8px;
 }
@@ -211,7 +203,6 @@ fieldset::-webkit-scrollbar-track {
     background-color: #45a049;
 }
 
-/* Conteúdo das páginas */
 .page {
     display: none;
 }
@@ -232,7 +223,6 @@ h3 {
     padding-left: 20px;
 }
 
-/* Radio estilizado */
 input.radio-estilizado {
     appearance: none;
     -webkit-appearance: none;
@@ -257,8 +247,8 @@ input.radio-estilizado:checked ~ h3 {
 }
 
 input.tituloEnquete {
-    width: 90%;
-    max-width: 550px;
+    width: 100%;
+    max-width: 530px;
     display: block;
     padding: 18px 18px;
     font-size: 18px;
@@ -266,15 +256,15 @@ input.tituloEnquete {
     border: 2px solid #444;
     border-radius: 8px;
     transition: border-color 0.3s, box-shadow 0.3s;
-    margin-bottom: 15px; /* Espaçamento entre os itens */
+    margin-bottom: 15px;
     margin-left: 10px;
 }
 .input-button-group {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; /* espaço entre o input e o botão */
-    flex-wrap: wrap; /* permite quebrar linha em telas menores */
+    gap: 10px; 
+    flex-wrap: wrap; 
 }
 
 P {
@@ -290,90 +280,266 @@ a {
     text-decoration: none;
 }
 
-/* Estilo geral para o contêiner dos gráficos */
 #chartContainer {
   display: flex;
-  justify-content: space-around; /* Alinha os gráficos lado a lado */
-  flex-wrap: wrap; /* Permite que os gráficos se movam para a linha seguinte em telas menores */
-  gap: 20px; /* Espaçamento entre os gráficos */
-  margin: 20px 0; /* Espaçamento externo */
+  justify-content: space-between; 
+  flex-wrap: wrap; 
+  gap: 20px; 
+  margin: 20px 0;
   padding: 0;
+  height: 250px;
 }
 
 
-/* Ajuste para telas menores */
-@media (max-width: 768px) {
-  #chartContainer {
-    flex-direction: column; /* Empilha os gráficos verticalmente em telas menores */
-    align-items: center; /* Centraliza os gráficos */
-  }
-
-  #pieChart, #barChart {
-    width: 90%; /* Ajusta o tamanho dos gráficos para 90% da largura da tela */
-    max-width: 400px; /* Define um tamanho máximo menor em telas pequenas */
-  }
-}
 
 
-/* Estilo para os gráficos individuais */
 #pieChart {
-  max-width: 500px; /* Tamanho máximo dos gráficos */
-  width: 100%; /* O gráfico se ajusta ao tamanho do contêiner */
-  height: 300px; /* Altura fixa do gráfico */
-  margin: 0 auto; /* Centraliza o gráfico */
-  background-color: #333; /* Cor de fundo para o gráfico */
-  border-radius: 10px; /* Bordas arredondadas para o gráfico */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras suaves para dar um efeito de profundidade */
+  max-width: 250px; 
+  width: 250px;
+  height: 250px;
+  margin: 0 auto; 
+  padding: 20px;
+  background-color: #333; 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-/* Ajustar as cores do gráfico de pizza */
 #pieChart canvas {
-  background-color: #333; /* Fundo escuro para combinar com o tema */
+  background-color: #333; /
 }
 
 #pieChart .chartjs-render-monitor {
-  background-color: #333 !important; /* Garantir fundo consistente */
+  background-color: #333 !important; 
 }
 
 #pieChart .chartjs-tooltip {
-  background-color: #4CAF50; /* Verde para as tooltips */
+  background-color: #4CAF50; 
   color: white;
 }
 
 #pieChart .chartjs-tooltip .tooltip-body {
-  color: white; /* Cor branca para o texto dentro da tooltip */
+  color: white; 
 }
-/* Estilo para o gráfico de barras */
 #barChart {
-  max-width: 500px; /* Tamanho máximo do gráfico */
-  width: 100%; /* O gráfico se ajusta ao tamanho do contêiner */
-  height: 300px; /* Altura fixa do gráfico */
-  margin: 0 auto; /* Centraliza o gráfico */
-  background-color: #333; /* Fundo escuro para combinar com o tema */
-  border-radius: 10px; /* Bordas arredondadas para o gráfico */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombras suaves para dar um efeito de profundidade */
+  max-width: 250px; 
+  width: 250px; 
+  height: 250px;
+  margin: 0 auto; 
+  background-color: #333; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-/* Personalizando as cores das barras */
 #barChart .chartjs-render-monitor {
-  background-color: #333; /* Fundo escuro */
+  background-color: #333; 
 }
 
 #barChart canvas {
-  background-color: #333; /* Fundo escuro */
+  background-color: #333; 
 }
 
-/* Definindo cores para as barras */
 #barChart .bar {
-  background-color: #4CAF50 !important; /* Verde para as barras */
+  background-color: #4CAF50 !important; 
 }
 
-/* Alterando as cores das labels de dados das barras */
 #barChart .chartjs-tooltip {
-  background-color: #4CAF50; /* Tooltip em verde */
+  background-color: #4CAF50; 
   color: white;
 }
 
 #barChart .chartjs-tooltip .tooltip-body {
   color: white;
+}
+
+
+
+
+
+@media (max-width: 763px) {
+  body {
+    flex-direction: column;
+    transform: none; 
+    padding: 10px;
+    height: auto;
+  }
+
+  .container {
+    width: 85%;
+    max-width: 100%;
+    margin-top: 40px;
+    padding: 20px;
+    height: auto;
+  }
+
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input.tituloEnquete {
+    width: 160px;
+    padding: 12px 15px;
+    margin-bottom: 0px;
+    border: 2px solid #444;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #2c2c2c;
+    color: #f5f5f5;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 0px;
+}
+
+
+input.tituloEnquete {
+    width: 100%;
+    max-width: 260px;
+    display: block;
+    padding: 18px 18px;
+    font-size: 18px;
+    background-color: #2c2c2c;
+    border: 2px solid #444;
+    border-radius: 8px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 15px; /* Espaçamento entre os itens */
+    margin-left: 10px;
+}
+ul li {
+    background-color: #333;
+    color: #ffffff;
+    margin-bottom: 18px;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    height: auto;
+     width: 100%;
+    max-width: 270px;
+}
+a {
+    text-decoration: none; 
+    width: 100%;
+}
+h3 {
+    color: #e0e0e0;
+width: auto;   
+ font-size: 10px;
+ height: auto;
+      
+
+}
+.deletar {
+    background-color: transparent;
+    color: white;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 50px;
+    height: 40px;
+    margin-left: 3px;
+}
+
+.botaoInicial {
+    width: 30px;
+     display: flex;
+      justify-content: center;
+    align-items: center;
+}
+
+/* Fieldsets */
+fieldset,
+fieldset.opcoesFieldset {
+    border: 1px solid #4CAF50;
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 10px;
+    background-color: #2b2b2b;
+    color: #f5f5f5;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #4CAF50 #333;
+        height: auto;
+}
+
+  .textoDinamic {
+    font-size: 18px;
+    padding-left: 10px;
+  }
+  
+
+#chartContainer {
+  display: flex;
+  justify-content: space-around; 
+  flex-wrap: wrap; 
+  gap: 20px; 
+  margin: 20px 0;
+  padding: 0;
+  height: 150px;
+}
+
+
+
+
+#pieChart {
+  max-width: 150px; 
+  width: 150px;
+  height: 150px; 
+  margin: 0 auto; 
+  padding: 20px;
+  background-color: #333; 
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+#pieChart canvas {
+  background-color: #333; /
+}
+
+#pieChart .chartjs-render-monitor {
+  background-color: #333 !important; 
+}
+
+#pieChart .chartjs-tooltip {
+  background-color: #4CAF50; 
+  color: white;
+}
+
+#pieChart .chartjs-tooltip .tooltip-body {
+  color: white; 
+}
+#barChart {
+  max-width: 150px; 
+  width: 150px; 
+  height: 150px; 
+  margin: 0 auto; 
+  background-color: #333; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+#barChart .chartjs-render-monitor {
+  background-color: #333; 
+}
+
+#barChart canvas {
+  background-color: #333; 
+}
+
+#barChart .bar {
+  background-color: #4CAF50 !important; 
+}
+
+#barChart .chartjs-tooltip {
+  background-color: #4CAF50; 
+  color: white;
+}
+
+#barChart .chartjs-tooltip .tooltip-body {
+  color: white;
+}
 }
