@@ -4,6 +4,7 @@ import { ref, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-dat
 
 
 
+
 let idsDosInputs = [];
 let contadorInput = 1;
 
@@ -122,10 +123,8 @@ window.salvarDadosNoFirebase = function () {
 
     let todosPreenchidos = true;
 
-    // Ordena corretamente para garantir que input01 venha como Opcao01
     const todosIds = [...idsDosInputs];
 
-    // Garante que input01 venha primeiro mesmo que tenha sido adicionado depois
     if (!todosIds.includes("input01")) {
         todosIds.unshift("input01");
     } else {
@@ -133,7 +132,6 @@ window.salvarDadosNoFirebase = function () {
         todosIds.unshift("input01");
     }
 
-    // Salvar cada input no formato: OpcaoXX: [valor, 0]
     todosIds.forEach((id, index) => {
         const input = document.getElementById(id);
         if (input && input.value.trim() !== "") {
@@ -154,7 +152,23 @@ window.salvarDadosNoFirebase = function () {
 
     set(referencia, dadosParaSalvar)
         .then(() => {
-            const linkCompartilhamento = `${window.location.origin}/taskmateuss/yourTask.html?ref=${codigoUnico}`;
+
+const isLocalhost =
+  window.location.hostname === 'localhost' ||
+  window.location.hostname === '127.0.0.1';
+
+const BASE_URL = isLocalhost
+  ? 'http://localhost/TAREFA%20DO%20MATEUS/yourTask.html?ref='   
+  : 'https://danieldss030225.github.io/taskmateus/yourTask.html?ref='; 
+
+const API_URL = BASE_URL + '/api';
+
+console.log('API rodando em:', API_URL);
+
+            let base = BASE_URL
+            let codigo =  `${codigoUnico}`
+
+            const linkCompartilhamento = base + codigo;
             document.getElementById("linkCompartilhar").textContent = linkCompartilhamento;
             console.log("Link de convite:", linkCompartilhamento);
             showPage('tab2', this);
@@ -165,18 +179,10 @@ window.salvarDadosNoFirebase = function () {
 };
 
 
-
-
-
-
-
-
-
-
 window.compartilharLink = function () {
 
     const paragrafo2 = document.getElementById("linkCompartilhar");
-    const url = paragrafo2.textContent; // Agora sim, pegando o conteúdo do parágrafo
+    const url = paragrafo2.textContent; 
 
     if (url) {
         window.open(url, '_blank');

@@ -3,23 +3,51 @@ import { update } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-datab
 import { database } from './firebase-config.js';
 import { ref, get, child, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
+
+const isLocalhost =
+  window.location.hostname === 'localhost' ||
+  window.location.hostname === '127.0.0.1';
+
+const BASE_URL = isLocalhost
+  ? 'http://localhost/TAREFA%20DO%20MATEUS/yourTask.html'   
+  : 'https://danieldss030225.github.io/taskmateus/yourTask.html'; 
+
+const API_URL = BASE_URL + '/api';
+
+console.log('API rodando em:', API_URL);
+
+
+
+
+const params = new URLSearchParams(window.location.search);
+const codigoConvite = params.get('ref');
+if (codigoConvite) {
+    
+    localStorage.removeItem('codigo');
+    
+    localStorage.setItem('codigo', codigoConvite);
+
+
+
+    window.location.href = BASE_URL ; // Substitua com o URL desejado
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 let codigoSalvo = localStorage.getItem('codigo');
 let juntar = "enquetes" + "/" + codigoSalvo
 
-    // Exibe o valor no console
     console.log('Código salvo no localStorage:', codigoSalvo);
-
-
-
-
-
-
-
-
-
-
-
-
 
 let rotulo = juntar;
 
@@ -34,14 +62,8 @@ get(child(dbRef, rotulo)).then((snapshot) => {
       executarAcao(chave, valor);
     });
 
-  } else {
-    console.warn("Nenhum dado encontrado em:", rotulo);
-  }
-}).catch((error) => {
-  console.error("Erro ao buscar dados:", error);
+  } 
 });
-
-
 
 let ultimoSelecionado = null; 
 
@@ -64,10 +86,8 @@ function executarAcao(chave, valor, name) {
     let texto = document.createElement("h3");
     let texto02 = document.createElement("h3");
 
-       document.getElementById("containerTask").style.display = "block";
+    document.getElementById("containerTask").style.display = "block";
    
-
-
     const textoId = `${chave}_texto`;
     const texto02Id = `${chave}_votos`;
 
@@ -91,8 +111,8 @@ function executarAcao(chave, valor, name) {
     listaDeEnquetes.appendChild(fundo);
 
     fundo.addEventListener('click', () => {
-      inputRadio.checked = true;
-      inputRadio.dispatchEvent(new Event('change'));
+    inputRadio.checked = true;
+    inputRadio.dispatchEvent(new Event('change'));
     });
     
     inputRadio.addEventListener('change', function () {
@@ -137,7 +157,6 @@ async function obterIP() {
 function formatarIP(ip) {
   return ip.replace(/\./g, '-');
 }
-
 async function verificarERegistrarVoto(rotulo) {
   const ip = await obterIP();
   const ipFormatado = formatarIP(ip);
@@ -149,7 +168,11 @@ async function verificarERegistrarVoto(rotulo) {
     return false; 
   } else {
     await set(ipRef, true);
+
+    // Redireciona para resultados.html
+    window.location.href = "resultados.html";
     alert("Obrigado por votar!");
+
     return true; 
   }
 }
@@ -199,6 +222,7 @@ let dadosGraficoCircular = [];
 let dadosGraficoLinear = [];
 
   function gerarGraficoCircular() {
+    
   const ctx = document.getElementById('pieChart').getContext('2d');
   new Chart(ctx, {
     type: 'pie',
@@ -225,7 +249,7 @@ let dadosGraficoLinear = [];
           }
         },
         datalabels: {
-          formatter: function(value, context) {
+          formatter: function(value) {
             return value + ' votos';
           },
           color: '#fff',
@@ -271,7 +295,7 @@ let dadosGraficoLinear = [];
         datalabels: {
           anchor: 'end',
           align: 'end',
-          formatter: function(value, context) {
+          formatter: function(value) {
             return value + ' votos';
           },
           color: '#fff',
@@ -305,8 +329,8 @@ get(child(dbRef, rotulo)).then((snapshot) => {
 
     gerarGraficoCircular();
     gerarGraficoLinear();
-                document.getElementById("fundoGeral").style.display = "Block";
-           
+   document.getElementById("fundoGeral").style.display = "Block";
+ 
 
   } else {
     console.warn("Nenhum dado encontrado em:", rotulo);

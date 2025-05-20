@@ -15,49 +15,35 @@
 
   
 <div id="containerResultados" class="container">
-  
-
-
-
-
-  
-<div style="display: none;" id="fundoGeral"  >
+<div id="fundoGeral" style="display: none;">
 <div id="tab1" class="page active">
 <h1 id="textoDaTarefa">
 Resultados
 </h1>
-   <p class="tornarInvisivel" id="codigo"></p> 
+<p class="tornarInvisivel" id="codigo"></p> 
 <p class="tornarInvisivel"  id="opcaoEscolhida">OPÇÃO ESCOLHIDA</p>
 <p>Acompanhe abaixo o resultado gráfico da votação </p>
 
 </div>               
 
 
-    <div class="graficosFlex" id="chartContainer">
-      <canvas id="barChart" ></canvas>
+<div class="graficosFlex" id="chartContainer">
+<canvas id="barChart" ></canvas>
+<canvas id="pieChart" ></canvas>
+</div>
 
-  <canvas id="pieChart" ></canvas>
-    </div>
-  
-
-
-    
-        <button class="buttonAdicionar" onclick="window.location.href='yourTask.html'">
-  Clique para voltar à enquete
+<button class="buttonAdicionar" onclick="window.location.href='yourTask.html'">
+Clique para voltar à enquete
 </button>
 </div>
 
-
-
-
-
 </div>
 
 
 
-<script  type="module" src="firebase-config.js" defer> </script> 
-<script type="module"  src="index.js" defer>  </script> 
-<script type="module"  src="yourTask.js" defer>  </script>
+<script type="module" src="firebase-config.js" defer> </script> 
+<script type="module" src="index.js" defer>  </script> 
+<script type="module" src="yourTask.js" defer>  </script>
 
 
 

@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+import { getDatabase} from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyANhYoZo47qW07a5MEu6b5Selo1pw3Mf8Y",
@@ -16,15 +16,3 @@ const app = initializeApp(firebaseConfig);
 export const database = getDatabase(app);
 
 
-const params = new URLSearchParams(window.location.search);
-const codigoConvite = params.get('ref');
-if (codigoConvite) {
-    
-    localStorage.removeItem('codigo');
-    
-    localStorage.setItem('codigo', codigoConvite);
-
-
-
-    window.location.href = 'https://danieldss030225.github.io/taskmateus/yourTask.html'; // Substitua com o URL desejado
-}
