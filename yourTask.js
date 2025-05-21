@@ -212,6 +212,32 @@ window.salvarVotos = async function () {
 };
 
 
+get(child(dbRef, rotulo)).then((snapshot) => {
+  if (snapshot.exists()) {
+    const lista = snapshot.val();
 
+    Object.entries(lista).forEach(([chave, valor]) => {
+      if (Array.isArray(valor)) {
+        const nome = valor[0];
+        const votos = valor[1];
+
+        dadosGraficoCircular.push({ nome, votos });
+        dadosGraficoLinear.push({ nome, votos });
+        console.log(nome);
+        console.log(votos);
+      }
+    });
+
+    gerarGraficoCircular();
+    gerarGraficoLinear();
+ 
+esconderSpinnerComAlerta()
+  } else {
+    console.warn("Nenhum dado encontrado em:", rotulo);
+  }
+}).catch((error) => {
+  
+  console.error("Erro ao buscar dados:", error);
+});
 
 
